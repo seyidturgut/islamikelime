@@ -15,20 +15,23 @@ class Game {
         // Ses efektlerini yükle
         this.correctSound = new Audio('sounds/correct.mp3');
         this.wrongSound = new Audio('sounds/wrong.mp3');
-        this.isSoundOn = true;
+        this.isSoundOn = localStorage.getItem('isSoundOn') !== 'false'; // Varsayılan olarak açık
 
         // Ses kontrolü
         this.soundToggle = document.getElementById('sound-toggle');
         this.soundIcon = this.soundToggle.querySelector('i');
-        this.soundToggle.addEventListener('click', (e) => {
-            e.preventDefault(); // Varsayılan davranışı engelle
+        this.updateSoundUI(); // İlk durumu ayarla
+        
+        this.soundToggle.addEventListener('click', () => {
             this.isSoundOn = !this.isSoundOn;
-            this.soundIcon.className = this.isSoundOn ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+            localStorage.setItem('isSoundOn', this.isSoundOn);
+            this.updateSoundUI();
         });
 
-        // URL'den kategoriyi al
+        // URL'den kategoriyi ve seviyeyi al
         const urlParams = new URLSearchParams(window.location.search);
         const category = urlParams.get('category');
+        const level = urlParams.get('level');
         
         if (!category) {
             window.location.href = 'categories.html';
@@ -36,17 +39,33 @@ class Game {
         }
 
         // Kategori verilerini al
-        this.categories = {
-            namaz: window.namazQuestions,
-            ahlak: window.ahlakQuestions,
-            ibadet: window.ibadetQuestions,
-            genel: window.genelQuestions
-        };
+        let questions;
+        if ((category === 'namaz' || category === 'ibadet') && level) {
+            const questionVariable = `${category}${level}Questions`;
+            questions = window[questionVariable];
+            console.log('Loading level questions:', questionVariable, questions);
+        } else {
+            const categoryMap = {
+                'namaz': window.namazQuestions,
+                'ahlak': window.ahlakQuestions,
+                'ibadet': window.ibadetQuestions,
+                'genel': window.genelQuestions
+            };
+            questions = categoryMap[category];
+            console.log('Loading category questions:', category, questions);
+        }
+
+        if (!questions || !Array.isArray(questions)) {
+            console.error('Questions not found or invalid:', category, level);
+            window.location.href = 'categories.html';
+            return;
+        }
+
+        this.currentQuestions = [...questions]; // Soruları kopyala
 
         // DOM Elements
         this.gameContainer = document.getElementById('game-container');
         this.wordContainer = document.getElementById('word-container');
-        this.arabicWordElement = document.getElementById('arabic-word');
         this.wordMeaningElement = document.getElementById('word-meaning');
         this.optionsContainer = document.getElementById('options-container');
         this.timerElement = document.getElementById('timer');
@@ -63,54 +82,45 @@ class Game {
         this.infoCardNext.addEventListener('click', () => {
             this.hideInfoCard();
             this.currentQuestionIndex++;
-            this.showQuestion();
+            this.displayCurrentQuestion();
         });
 
         // Oyunu başlat
-        this.startGameWithCategory(category);
+        this.startGameWithCategory();
     }
 
-    startGameWithCategory(category) {
-        // Seçilen kategorideki soruları al
-        this.currentQuestions = [...this.categories[category]];
-        this.shuffleArray(this.currentQuestions);
-        this.currentQuestionIndex = 0;
-        this.totalQuestions = this.currentQuestions.length;
-        this.score = 0;
-        this.correctAnswers = 0;
-        this.wrongAnswers = 0;
-        this.updateUI();
-        this.startGame();
-    }
-
-    startGame() {
-        this.isGameOver = false;
-        this.timeLeft = 30;
-        this.showQuestion();
+    startGameWithCategory() {
+        // Soruları karıştır
+        this.currentQuestions = this.shuffleArray(this.currentQuestions);
+        
+        // İlk soruyu göster
+        this.displayCurrentQuestion();
+        
+        // Zamanlayıcıyı başlat
         this.startTimer();
     }
 
-    showQuestion() {
+    displayCurrentQuestion() {
         if (this.currentQuestionIndex >= this.currentQuestions.length) {
             this.endGame();
             return;
         }
 
+        // Soru sayısını güncelle
+        this.totalQuestions = this.currentQuestions.length;
+        this.updateUI();
+
         const currentQuestion = this.currentQuestions[this.currentQuestionIndex];
         
         // Soruyu göster
-        this.arabicWordElement.textContent = currentQuestion.arabic;
         this.wordMeaningElement.textContent = currentQuestion.question;
         
         // Seçenekleri oluştur
+        this.optionsContainer.innerHTML = '';
         this.createOptions(currentQuestion.options, currentQuestion.turkish);
-
-        // UI'ı güncelle
-        this.updateUI();
     }
 
     createOptions(options, correctAnswer) {
-        this.optionsContainer.innerHTML = '';
         const shuffledOptions = [...options];
         this.shuffleArray(shuffledOptions);
 
@@ -134,7 +144,7 @@ class Game {
         this.pauseTimer();
         
         // Doğru cevabı ve açıklamayı göster
-        document.getElementById('correct-answer').textContent = currentQuestion.turkish;
+        document.getElementById('correct-answer').textContent = currentQuestion.options[0]; 
         document.getElementById('info-text').textContent = currentQuestion.explanation;
         
         // Info card'ı göster
@@ -216,43 +226,51 @@ class Game {
         this.questionNumberElement.textContent = `${currentQuestion}/${this.totalQuestions}`;
     }
 
+    updateSoundUI() {
+        this.soundIcon.className = this.isSoundOn ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+        this.soundToggle.style.color = this.isSoundOn ? '#4CAF50' : '#dc3545';
+    }
+
+    playSound(type) {
+        if (!this.isSoundOn) return;
+        
+        const sound = type === 'correct' ? this.correctSound : this.wrongSound;
+        sound.currentTime = 0;
+        sound.play().catch(e => console.log('Ses çalma hatası:', e));
+    }
+
     checkAnswer(button) {
         if (this.isChecking) return; // Cevap kontrolü devam ediyorsa çık
         this.isChecking = true;
 
         const buttons = document.querySelectorAll('.option-button');
         const currentQuestion = this.currentQuestions[this.currentQuestionIndex];
+        const correctAnswer = currentQuestion.options[0]; // İlk seçenek her zaman doğru cevap
 
-        if (button.textContent === currentQuestion.turkish) {
+        if (button.textContent === correctAnswer) {
             // Doğru cevap animasyonu
             button.classList.add('correct', 'animate__animated', 'animate__pulse');
             this.score += 10;
             this.correctAnswers++;
-            if (this.isSoundOn) {
-                this.correctSound.currentTime = 0;
-                this.correctSound.play().catch(error => console.log('Ses çalma hatası:', error));
-            }
+            this.playSound('correct');
             this.updateUI();
             
             // Doğru cevapta direkt diğer soruya geç
             setTimeout(() => {
                 this.currentQuestionIndex++;
-                this.showQuestion();
+                this.displayCurrentQuestion();
                 this.isChecking = false;
             }, 1000);
         } else {
             // Yanlış cevap animasyonu
             button.classList.add('wrong', 'animate__animated', 'animate__shakeX');
             this.wrongAnswers++;
-            if (this.isSoundOn) {
-                this.wrongSound.currentTime = 0;
-                this.wrongSound.play().catch(error => console.log('Ses çalma hatası:', error));
-            }
+            this.playSound('wrong');
 
             // Doğru cevabı göster
             setTimeout(() => {
                 buttons.forEach(btn => {
-                    if (btn.textContent === currentQuestion.turkish) {
+                    if (btn.textContent === correctAnswer) {
                         btn.classList.add('correct', 'animate__animated', 'animate__bounceIn');
                     }
                 });
@@ -260,6 +278,13 @@ class Game {
 
             // Bilgi kartını sadece yanlış cevapta göster
             setTimeout(() => {
+                const infoCard = document.getElementById('info-card');
+                const correctAnswerSpan = document.getElementById('correct-answer');
+                const infoText = document.getElementById('info-text');
+                
+                correctAnswerSpan.textContent = correctAnswer;
+                infoText.textContent = currentQuestion.explanation;
+                
                 this.showInfoCard();
                 this.isChecking = false;
             }, 700);
@@ -288,3 +313,18 @@ window.addEventListener('load', () => {
         });
     });
 });
+
+function toggleSound() {
+    const soundToggleBtn = document.getElementById('sound-toggle');
+    const soundIcon = soundToggleBtn.querySelector('i');
+    
+    if (localStorage.getItem('soundEnabled') === 'true') {
+        localStorage.setItem('soundEnabled', 'false');
+        soundIcon.className = 'fas fa-volume-mute';
+        soundToggleBtn.style.color = '#dc3545';
+    } else {
+        localStorage.setItem('soundEnabled', 'true');
+        soundIcon.className = 'fas fa-volume-up';
+        soundToggleBtn.style.color = '#4CAF50';
+    }
+}

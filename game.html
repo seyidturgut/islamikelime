@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Oyun - İslami Kelime Oyunu</title>
-    <link rel="preload" href="font/UthmanTN_v2-0.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=1.1">
@@ -15,7 +14,11 @@
         <div class="nav-buttons">
             <a href="categories.html" class="nav-btn back-btn">← Geri</a>
             <a href="index.html" class="nav-btn exit-btn">✕ Çıkış</a>
-            <button id="sound-toggle" class="nav-btn sound-btn"><i class="fas fa-volume-up"></i></button>
+        </div>
+        <div class="sound-control">
+            <button id="sound-toggle" class="nav-btn sound-btn" type="button">
+                <i class="fas fa-volume-up"></i>
+            </button>
         </div>
         <div id="header">
             <div class="score-container">
@@ -33,7 +36,6 @@
         </div>
 
         <div id="word-container" class="animate__animated">
-            <div id="arabic-word" class="arabic-text"></div>
             <div id="word-meaning" class="question-text"></div>
         </div>
 
@@ -87,9 +89,15 @@
     </div>
 
     <!-- Kategori verileri -->
-    <script src="categories/namaz.js"></script>
+    <script src="categories/namaz-seviye1.js"></script>
+    <script src="categories/namaz-seviye2.js"></script>
+    <script src="categories/namaz-seviye3.js"></script>
+    <script src="categories/namaz-seviye4.js"></script>
     <script src="categories/ahlak.js"></script>
-    <script src="categories/ibadet.js"></script>
+    <script src="categories/ibadet-seviye1.js"></script>
+    <script src="categories/ibadet-seviye2.js"></script>
+    <script src="categories/ibadet-seviye3.js"></script>
+    <script src="categories/ibadet-seviye4.js"></script>
     <script src="categories/genel.js"></script>
     
     <!-- Oyun mantığı -->

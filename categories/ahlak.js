@@ -1,73 +1,123 @@
 const ahlakQuestions = [
     {
-        arabic: "أَخْلَاق",
-        turkish: "Ahlak",
-        question: "İslam ahlakının temel kaynakları nelerdir?",
-        options: ["Kur'an ve Sünnet", "Örf ve Adetler", "Felsefi Düşünceler", "Toplumsal Kurallar"],
-        explanation: "İslam ahlakının temel kaynakları Kur'an-ı Kerim ve Hz. Muhammed'in (s.a.v.) sünnetidir. Peygamberimiz 'Ben güzel ahlakı tamamlamak için gönderildim' buyurmuştur."
-    },
-    {
-        arabic: "صِدْق",
         turkish: "Doğruluk",
-        question: "Peygamberimizin Mekke döneminde müşrikler tarafından hangi sıfatla anıldığı bilinmektedir?",
-        options: ["el-Emin (Güvenilir)", "el-Mustafa (Seçilmiş)", "er-Resul (Elçi)", "el-Haşimi (Haşimoğlu)"],
-        explanation: "Hz. Muhammed (s.a.v.), peygamberlik öncesi ve sonrasında doğruluğu ve güvenilirliği sebebiyle 'el-Emin' (Güvenilir) lakabıyla tanınırdı."
+        question: "İslam'da en önemli ahlaki değerlerden biri olan, her zaman doğruyu söylemeye ne denir?",
+        options: ["Sıdk", "Emanet", "Adalet", "Sabır"],
+        explanation: "Sıdk (doğruluk), İslam ahlakının temel değerlerinden biridir."
     },
     {
-        arabic: "أَمَانَة",
         turkish: "Emanet",
-        question: "Emaneti korumak ve sahibine teslim etmek hangi İslami ahlak ilkesiyle ilgilidir?",
-        options: ["Güvenilirlik", "Cömertlik", "Sabır", "Tevazu"],
-        explanation: "Emaneti korumak güvenilirlik (el-Emin) ilkesiyle ilgilidir. Kur'an'da 'Emanetleri ehline verin' (Nisa 58) buyrulmuştur."
+        question: "Başkasına ait olup korunmak üzere bırakılan şeye ne denir?",
+        options: ["Emanet", "Sadaka", "Zekat", "Fitre"],
+        explanation: "Emanet, korunmak üzere bırakılan ve sahibine geri verilmesi gereken şeydir."
     },
     {
-        arabic: "صَبْر",
         turkish: "Sabır",
-        question: "Aşağıdakilerden hangisi sabır çeşitlerinden biri değildir?",
-        options: ["Zenginliğe Sabır", "Musibetlere Sabır", "İbadette Sabır", "Günahlardan Uzak Durmada Sabır"],
-        explanation: "Sabır üç çeşittir: Musibetlere sabır, ibadette sabır ve günahlardan uzak durmada sabır. Zenginliğe sabır diye bir kavram yoktur."
+        question: "Zorluklar karşısında dayanma gücüne ne denir?",
+        options: ["Sabır", "Şükür", "Tevekkül", "Rıza"],
+        explanation: "Sabır, zorluklar karşısında dayanma gücü ve tahammül göstermektir."
     },
     {
-        arabic: "عَدْل",
-        turkish: "Adalet",
-        question: "Kur'an-ı Kerim'de 'Allah size emanetleri ehline vermenizi ve insanlar arasında hükmettiğiniz zaman adaletle hükmetmenizi emreder' ayeti hangi surede geçer?",
-        options: ["Nisa Suresi", "Maide Suresi", "Bakara Suresi", "Araf Suresi"],
-        explanation: "Bu ayet Nisa Suresi 58. ayette geçer ve adaletin önemini vurgular. Adalet, İslam'ın temel prensiplerinden biridir."
-    },
-    {
-        arabic: "تَوَاضُع",
         turkish: "Tevazu",
-        question: "Hz. Peygamber'in tevazu ile ilgili 'Kim Allah için alçak gönüllü olursa, Allah onu yükseltir' hadisinde vurgulanan ana fikir nedir?",
-        options: ["Tevazunun yücelmeye vesile olması", "Kibrin kötülüğü", "İnsanlarla iyi geçinmek", "Makam sevgisi"],
-        explanation: "Hadiste, Allah için gösterilen tevazunun (alçak gönüllülüğün) kişiyi Allah katında yücelteceği vurgulanmaktadır."
+        question: "Alçak gönüllü olmaya ne denir?",
+        options: ["Tevazu", "Kibir", "Gurur", "Riya"],
+        explanation: "Tevazu, alçak gönüllü olmak ve kibirden uzak durmaktır."
     },
     {
-        arabic: "رَحْمَة",
+        turkish: "Adalet",
+        question: "Herkese hakkını vermeye ne denir?",
+        options: ["Adalet", "Zulüm", "Haksızlık", "Tarafgirlik"],
+        explanation: "Adalet, herkese hakkını vermek ve hakkaniyetli davranmaktır."
+    },
+    {
         turkish: "Merhamet",
-        question: "Hz. Peygamber'in 'Merhamet etmeyene merhamet edilmez' hadisi hangi ahlaki davranışı vurgulamaktadır?",
-        options: ["Merhametin karşılıklı olması", "Affediciliğin önemi", "Sabırlı olmanın fazileti", "Cömertliğin değeri"],
-        explanation: "Bu hadis, merhametin karşılıklı olduğunu ve merhamet edene Allah'ın da merhamet edeceğini vurgulamaktadır."
+        question: "Başkalarının acılarını paylaşıp yardım etme duygusuna ne denir?",
+        options: ["Merhamet", "Şefkat", "Sevgi", "Muhabbet"],
+        explanation: "Merhamet, başkalarının acılarını paylaşıp yardım etme duygusudur."
     },
     {
-        arabic: "حِلْم",
-        turkish: "Yumuşak Huyluluk",
-        question: "Hz. Peygamber'in 'Kuvvetli kimse, güreşte başkalarını yenen değil, öfke anında kendisine hâkim olandır' hadisinde vurgulanan erdem hangisidir?",
-        options: ["Öfkeyi Kontrol", "Fiziksel Güç", "Cesaret", "Sabır"],
-        explanation: "Hadiste öfkeyi kontrol etmenin ve yumuşak huylu olmanın önemi vurgulanmaktadır. Gerçek güç, nefse hâkim olmaktır."
-    },
-    {
-        arabic: "كَرَم",
-        turkish: "Cömertlik",
-        question: "İslam'da cömertlikle ilgili 'Veren el, alan elden üstündür' hadisinde anlatılmak istenen nedir?",
-        options: ["Vermenin erdemi", "Zenginliğin önemi", "Malın değeri", "Fakirliğin kötülüğü"],
-        explanation: "Hadiste, vermenin almaktan daha faziletli olduğu ve cömertliğin İslam'daki önemi vurgulanmaktadır."
-    },
-    {
-        arabic: "شُكْر",
         turkish: "Şükür",
-        question: "Kur'an'da 'Andolsun, şükrederseniz elbette size (nimetimi) artırırım' ayeti hangi surede geçmektedir?",
-        options: ["İbrahim Suresi", "Bakara Suresi", "Rahman Suresi", "Nisa Suresi"],
-        explanation: "Bu ayet İbrahim Suresi 7. ayette geçer ve şükrün önemini, şükredenlere nimetlerin artırılacağını vurgular."
+        question: "Allah'ın verdiği nimetlere karşı gösterilen minnettarlığa ne denir?",
+        options: ["Şükür", "Hamd", "Zikir", "Dua"],
+        explanation: "Şükür, Allah'ın verdiği nimetlere karşı gösterilen minnettarlıktır."
+    },
+    {
+        turkish: "İhlas",
+        question: "Yapılan ibadetin sadece Allah rızası için yapılmasına ne denir?",
+        options: ["İhlas", "Riya", "Gösteriş", "Taklit"],
+        explanation: "İhlas, ibadetlerin sadece Allah rızası için yapılmasıdır."
+    },
+    {
+        turkish: "Hilm",
+        question: "Öfkeyi kontrol edip yumuşak huylu olmaya ne denir?",
+        options: ["Hilm", "Gazap", "Hiddet", "Şiddet"],
+        explanation: "Hilm, öfkeyi kontrol edip yumuşak huylu olmaktır."
+    },
+    {
+        turkish: "Vefa",
+        question: "Dostluğa ve verilen söze bağlı kalmaya ne denir?",
+        options: ["Vefa", "İhanet", "Unutkanlık", "Nankörlük"],
+        explanation: "Vefa, dostluğa ve verilen söze bağlı kalmaktır."
+    },
+    {
+        turkish: "Takva",
+        question: "Allah'a karşı sorumluluk bilinci ve günahlardan sakınmaya ne denir?",
+        options: ["Takva", "Riya", "Gaflet", "Fısk"],
+        explanation: "Takva, Allah'a karşı sorumluluk bilinci ve günahlardan sakınmaktır."
+    },
+    {
+        turkish: "İffet",
+        question: "Namus, hayâ ve ahlak temizliğine ne denir?",
+        options: ["İffet", "Fücur", "İsraf", "Sefahet"],
+        explanation: "İffet, namus, hayâ ve ahlak temizliğini ifade eder."
+    },
+    {
+        turkish: "Güvenilirlik",
+        question: "Peygamberimizin 'el-Emin' (güvenilir) sıfatıyla ilişkili olan ahlaki değer nedir?",
+        options: ["Güvenilirlik", "Yalancılık", "Hainlik", "Aldatma"],
+        explanation: "Güvenilirlik (emanet), Peygamberimizin en önemli vasıflarından biriydi."
+    },
+    {
+        turkish: "Zühd",
+        question: "Dünya malına gereğinden fazla değer vermeme ve kanaat etmeye ne denir?",
+        options: ["Zühd", "Tamah", "Hırs", "İsraf"],
+        explanation: "Zühd, dünya malına gereğinden fazla değer vermeme ve kanaat etmedir."
+    },
+    {
+        turkish: "Mürüvvet",
+        question: "İnsanlık, yiğitlik ve mertlik erdemlerine ne denir?",
+        options: ["Mürüvvet", "Zillet", "Miskinlik", "Korkaklık"],
+        explanation: "Mürüvvet, insanlık, yiğitlik ve mertlik erdemlerini ifade eder."
+    },
+    {
+        turkish: "Hayâ",
+        question: "Utanma duygusu ve edebe aykırı davranışlardan kaçınmaya ne denir?",
+        options: ["Hayâ", "Arsızlık", "Küstahlık", "Saygısızlık"],
+        explanation: "Hayâ, utanma duygusu ve edebe aykırı davranışlardan kaçınmaktır."
+    },
+    {
+        turkish: "Kanaat",
+        question: "Eldeki ile yetinme ve aç gözlü olmamaya ne denir?",
+        options: ["Kanaat", "Tamah", "Hırs", "Açgözlülük"],
+        explanation: "Kanaat, eldeki ile yetinme ve aç gözlü olmama erdemidir."
+    },
+    {
+        turkish: "Müsamaha",
+        question: "Hoşgörülü olmaya ve affedici davranmaya ne denir?",
+        options: ["Müsamaha", "Taassup", "Katılık", "İntikam"],
+        explanation: "Müsamaha, hoşgörülü olmayı ve affedici davranmayı ifade eder."
+    },
+    {
+        turkish: "Fütüvvet",
+        question: "Gençlik, cömertlik ve yiğitlik erdemlerinin bütününe ne denir?",
+        options: ["Fütüvvet", "Cimrilik", "Korkaklık", "Bencillik"],
+        explanation: "Fütüvvet, gençlik, cömertlik ve yiğitlik erdemlerinin bütününü ifade eder."
+    },
+    {
+        turkish: "İsar",
+        question: "Başkalarını kendine tercih etme ve fedakarlığa ne denir?",
+        options: ["İsar", "Bencillik", "Cimrilik", "Haset"],
+        explanation: "İsar, başkalarını kendine tercih etme ve fedakarlık erdemidir."
     }
 ];
 
