@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>İslami Kelime Oyunu</title>
+    <link rel="preload" href="/font/UthmanTN_v2-0.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+<body>
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="welcome-content animate__animated animate__fadeIn">
+            <h1>İslami Kelime Oyunu</h1>
+            <p>İslami terimleri öğrenmek için eğlenceli bir yolculuğa hazır mısın?</p>
+            <div class="game-rules">
+                <h3>Nasıl Oynanır?</h3>
+                <ul>
+                    <li>Her soruda 4 seçenek sunulacak</li>
+                    <li>Doğru cevap için 10 puan kazanacaksın</li>
+                    <li>Her soru için 30 saniye süren var</li>
+                    <li>Yanlış cevaplarda açıklamalı bilgi kartı göreceksin</li>
+                </ul>
+            </div>
+            <a href="categories.html" class="start-game-btn animate__animated animate__pulse animate__infinite">Başla</a>
+        </div>
+    </div>
+    <script>
+        // Sayfa yüklendiğinde animasyonları başlat
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.welcome-content').classList.add('animate__fadeIn');
+        });
+    </script>
+</body>
+</html>

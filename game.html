@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Oyun - İslami Kelime Oyunu</title>
+    <link rel="preload" href="font/UthmanTN_v2-0.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Navigasyon düğmeleri -->
+        <div class="nav-buttons">
+            <a href="categories.html" class="nav-btn back-btn">← Geri</a>
+            <a href="index.html" class="nav-btn exit-btn">✕ Çıkış</a>
+            <button id="sound-toggle" class="nav-btn sound-btn"><i class="fas fa-volume-up"></i></button>
+        </div>
+        <div id="header">
+            <div class="score-container">
+                <span id="score">0</span>
+                <label>Puan</label>
+            </div>
+            <div class="timer-container">
+                <span id="timer">30</span>
+                <label>Saniye</label>
+            </div>
+            <div class="level-container">
+                <span id="question-number">1/20</span>
+                <label>Soru</label>
+            </div>
+        </div>
+
+        <div id="word-container" class="animate__animated">
+            <div id="arabic-word" class="arabic-text"></div>
+            <div id="word-meaning" class="question-text"></div>
+        </div>
+
+        <div id="options-container">
+            <!-- Options will be dynamically added here -->
+        </div>
+
+        <div id="info-card" class="hidden animate__animated">
+            <div class="info-card-content">
+                <h3>Doğru Cevap: <span id="correct-answer"></span></h3>
+                <p id="info-text"></p>
+                <button id="info-card-next" class="btn-next">Devam Et</button>
+            </div>
+        </div>
+
+        <div id="gameOverScreen" style="display: none;">
+            <div class="game-over-container">
+                <h1 class="game-over-title">Oyun Bitti</h1>
+                <div class="final-score" id="finalScore">0</div>
+                <div class="game-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="finalQuestionNumber">0/20</div>
+                        <div class="stat-label">Soru</div>
+                    </div>
+                </div>
+                <div class="answer-stats">
+                    <div class="stat-item correct-stat">
+                        <div class="stat-value" id="correctAnswers">0</div>
+                        <div class="stat-label">Doğru</div>
+                    </div>
+                    <div class="stat-item wrong-stat">
+                        <div class="stat-value" id="wrongAnswers">0</div>
+                        <div class="stat-label">Yanlış</div>
+                    </div>
+                </div>
+                <div class="game-over-buttons">
+                    <a href="categories.html" class="game-over-button primary-button">Kategorilere Dön</a>
+                    <a href="index.html" class="game-over-button secondary-button">Ana Sayfaya Dön</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-container" class="hidden animate__animated">
+            <div class="final-score-container">
+                <div class="final-score-label">Toplam Puan</div>
+                <div id="final-score">0</div>
+            </div>
+            <a href="categories.html" class="btn-restart">Kategorilere Dön</a>
+            <a href="index.html" class="btn-home">Ana Sayfaya Dön</a>
+        </div>
+    </div>
+
+    <!-- Kategori verileri -->
+    <script src="categories/namaz.js"></script>
+    <script src="categories/ahlak.js"></script>
+    <script src="categories/ibadet.js"></script>
+    <script src="categories/genel.js"></script>
+    
+    <!-- Oyun mantığı -->
+    <script src="game.js"></script>
+</body>
+</html>
