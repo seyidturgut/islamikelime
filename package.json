@@ -1,12 +1,13 @@
 {
   "name": "islamikelime",
   "version": "1.0.0",
-  "description": "İslami Kelime Oyunu",
+  "description": "İslami Bilgi Oyunu",
   "main": "index.html",
   "scripts": {
-    "start": "serve ."
+    "start": "serve .",
+    "dev": "serve ."
   },
-  "dependencies": {
+  "devDependencies": {
     "serve": "^14.2.1"
   }
 }

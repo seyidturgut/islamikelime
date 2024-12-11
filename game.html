@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Oyun - İslami Bilgi Oyunu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <audio id="correctSound" src="sounds/correct.mp3" preload="auto"></audio>
     <audio id="wrongSound" src="sounds/wrong.mp3" preload="auto"></audio>
@@ -14,6 +14,8 @@
 <body class="bg-gradient-to-br from-emerald-50 to-teal-100 min-h-screen">
     <div id="game-container" class="max-w-2xl mx-auto px-4 py-6">
         <h1 id="categoryTitle" class="text-2xl font-bold text-center text-emerald-800 mb-6">Yükleniyor...</h1>
+        
+        <!-- Geri Dön ve Timer -->
         <div class="flex justify-between items-center mb-8">
             <a href="#" id="backButton" class="flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 transition-colors bg-white rounded-lg px-4 py-2 shadow-sm">
                 <i class="fas fa-arrow-left"></i>
@@ -63,119 +65,97 @@
             </div>
         </div>
     </div>
-
+<!-- Yanlış Cevap Modal -->
+<div id="wrongAnswerModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full animate__animated animate__fadeInUp">
+        <h2 class="text-3xl font-bold text-center text-red-600 mb-4">Yanlış Cevap!</h2>
+        <div class="mb-4">
+            <p class="text-emerald-800 font-bold mb-2">Doğru Cevap:</p>
+            <p id="correctAnswer" class="text-emerald-600"></p>
+        </div>
+        <div class="mb-6">
+            <p class="text-emerald-800 font-bold mb-2">Açıklama:</p>
+            <p id="answerExplanation" class="text-emerald-600"></p>
+        </div>
+        <button id="continueButton" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            Devam Et
+        </button>
+    </div>
+</div>
     <!-- Sonuç Modal -->
     <div id="resultModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
         <div class="bg-white rounded-2xl p-8 max-w-md w-full animate__animated animate__fadeInUp">
-            <h2 class="text-2xl font-bold text-center text-emerald-800 mb-6">Oyun Bitti!</h2>
-            <div class="space-y-4 mb-8">
-                <div class="flex justify-between items-center">
-                    <span class="text-gray-600">Toplam Puan:</span>
-                    <span id="finalScore" class="text-2xl font-bold text-emerald-600">0</span>
+            <h2 class="text-3xl font-bold text-center text-emerald-800 mb-4">Oyun Bitti</h2>
+            <p id="resultMessage" class="text-emerald-600 font-bold mb-4">Seviye tamamlandı!</p>
+            
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="text-center">
+                    <div id="finalScore" class="text-3xl font-bold text-emerald-600">0</div>
+                    <div class="text-emerald-500">Puan</div>
                 </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-gray-600">Doğru Sayısı:</span>
-                    <span id="finalCorrect" class="text-lg font-semibold text-emerald-600">0</span>
+                <div class="text-center">
+                    <div id="finalCorrect" class="text-3xl font-bold text-emerald-600">0</div>
+                    <div class="text-emerald-500">Doğru</div>
                 </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-gray-600">Yanlış Sayısı:</span>
-                    <span id="finalWrong" class="text-lg font-semibold text-red-600">0</span>
+                <div class="text-center">
+                    <div id="finalWrong" class="text-3xl font-bold text-emerald-600">0</div>
+                    <div class="text-emerald-500">Yanlış</div>
                 </div>
             </div>
-            <div class="flex flex-col space-y-3">
-                <a href="categories.html" class="bg-emerald-600 text-white text-center py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors">
-                    Ana Menüye Dön
+            
+            <!-- İlerleme Bilgileri -->
+            <div class="bg-emerald-50 rounded-xl p-4 mb-6">
+                <h3 class="font-bold text-emerald-800 mb-2">İlerleme Bilgileri</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <div class="text-emerald-600">En Yüksek Puan</div>
+                        <div id="highScore" class="font-bold text-emerald-800">0</div>
+                    </div>
+                    <div>
+                        <div class="text-emerald-600">Tamamlama Oranı</div>
+                        <div id="completionRate" class="font-bold text-emerald-800">0%</div>
+                    </div>
+                    <div>
+                        <div class="text-emerald-600">Oynama Sayısı</div>
+                        <div id="playCount" class="font-bold text-emerald-800">0</div>
+                    </div>
+                    <div>
+                        <div class="text-emerald-600">Son Oynanma</div>
+                        <div id="lastPlayed" class="font-bold text-emerald-800">-</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Butonlar -->
+            <div class="flex space-x-4">
+                <a href="categories.html" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-lg text-center transition-colors">
+                    Kategorilere Dön
                 </a>
-                <button onclick="location.reload()" class="border-2 border-emerald-600 text-emerald-600 py-3 px-6 rounded-lg hover:bg-emerald-50 transition-colors">
+                <button onclick="location.reload()" class="flex-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold py-3 px-6 rounded-lg transition-colors">
                     Tekrar Oyna
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Yanlış Cevap Modal -->
-    <div id="wrongAnswerModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
+    <!-- Çıkış Onay Modal -->
+    <div id="exitConfirmModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
         <div class="bg-white rounded-2xl p-8 max-w-md w-full animate__animated animate__fadeInUp">
-            <h2 class="text-2xl font-bold text-center text-red-600 mb-4">Yanlış Cevap</h2>
-            <div class="mb-6">
-                <p class="font-semibold text-gray-700 mb-2">Doğru Cevap:</p>
-                <p id="correctAnswer" class="text-emerald-600 font-medium"></p>
+            <h2 class="text-2xl font-bold text-center text-emerald-800 mb-4">Oyundan Çıkmak İstiyor musunuz?</h2>
+            <p class="text-emerald-600 text-center mb-6">İlerlemenizdeki değişiklikler kaydedilmeyecek.</p>
+            
+            <div class="flex space-x-4">
+                <button id="exitConfirmButton" class="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                    Evet, Çık
+                </button>
+                <button id="exitCancelButton" class="flex-1 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold py-3 px-6 rounded-lg transition-colors">
+                    İptal
+                </button>
             </div>
-            <div class="mb-6">
-                <p class="font-semibold text-gray-700 mb-2">Açıklama:</p>
-                <p id="answerExplanation" class="text-gray-600"></p>
-            </div>
-            <button id="continueButton" class="w-full bg-emerald-600 text-white text-center py-3 px-6 rounded-lg hover:bg-emerald-700 transition-colors">
-                Devam Et
-            </button>
         </div>
     </div>
-    <!-- Çıkış Modal -->
-     <div id="exitConfirmModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center px-4">
-         <div class="bg-white rounded-2xl p-8 max-w-md w-full animate__animated animate__fadeInUp">
-             <h2 class="text-2xl font-bold text-center text-emerald-800 mb-6">Oyundan Çıkmak İstiyor musunuz?</h2>
-             <p class="text-gray-600 mb-6 text-center">Oyun ilerleyişiniz kaydedilmeyecek.</p>
-             <div class="flex space-x-4">
-                 <button id="exitConfirm" class="flex-1 bg-red-600 text-white text-center py-3 px-6 rounded-lg hover:bg-red-700 transition-colors">
-                     Evet, Çık
-                 </button>
-                 <button id="exitCancel" class="flex-1 border-2 border-emerald-600 text-emerald-600 py-3 px-6 rounded-lg hover:bg-emerald-50 transition-colors">
-                     İptal
-                 </button>
-             </div>
-         </div>
-     </div>
-</div>
 
-    <!-- Soru dosyalarını yükle -->
-    <!-- Namaz Seviyeleri -->
-    <script src="categories/namaz-seviye1.js"></script>
-    <script src="categories/namaz-seviye2.js"></script>
-    <script src="categories/namaz-seviye3.js"></script>
-    <script src="categories/namaz-seviye4.js"></script>
-    <script src="categories/namaz-seviye5.js"></script>
-    <script src="categories/namaz-seviye6.js"></script>
-    <script src="categories/namaz-seviye7.js"></script>
-    <script src="categories/namaz-seviye8.js"></script>
-    <script src="categories/namaz-seviye9.js"></script>
-    <script src="categories/namaz-seviye10.js"></script>
-    
-    <!-- İbadet Seviyeleri -->
-    <script src="categories/ibadet-seviye1.js"></script>
-    <script src="categories/ibadet-seviye2.js"></script>
-    <script src="categories/ibadet-seviye3.js"></script>
-    <script src="categories/ibadet-seviye4.js"></script>
-    <script src="categories/ibadet-seviye5.js"></script>
-    <script src="categories/ibadet-seviye6.js"></script>
-    <script src="categories/ibadet-seviye7.js"></script>
-    <script src="categories/ibadet-seviye8.js"></script>
-    <script src="categories/ibadet-seviye9.js"></script>
-    <script src="categories/ibadet-seviye10.js"></script>
-
-    <!-- Ahlak Seviyeleri -->
-    <script src="categories/ahlak-seviye1.js"></script>
-    <script src="categories/ahlak-seviye2.js"></script>
-    <script src="categories/ahlak-seviye3.js"></script>
-    <script src="categories/ahlak-seviye4.js"></script>
-    <script src="categories/ahlak-seviye5.js"></script>
-    <script src="categories/ahlak-seviye6.js"></script>
-    <script src="categories/ahlak-seviye7.js"></script>
-    <script src="categories/ahlak-seviye8.js"></script>
-    <script src="categories/ahlak-seviye9.js"></script>
-    <script src="categories/ahlak-seviye10.js"></script>
-
-    <!-- Genel Seviyeleri -->
-    <script src="categories/genel-seviye1.js"></script>
-    <script src="categories/genel-seviye2.js"></script>
-    <script src="categories/genel-seviye3.js"></script>
-    <script src="categories/genel-seviye4.js"></script>
-    <script src="categories/genel-seviye5.js"></script>
-    <script src="categories/genel-seviye6.js"></script>
-    <script src="categories/genel-seviye7.js"></script>
-    <script src="categories/genel-seviye8.js"></script>
-    <script src="categories/genel-seviye9.js"></script>
-    <script src="categories/genel-seviye10.js"></script>
-
-    <script src="js/game.js"></script>
+    <!-- Ana Script -->
+    <script src="js/game.js" type="module"></script>
 </body>
 </html>

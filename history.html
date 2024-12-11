@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oyun Geçmişi - İslami Kelime Oyunu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        .nav-button {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-button.active {
+            background-color: #047857;
+            color: white;
+        }
+
+        .nav-button:not(.active) {
+            background-color: #e5e7eb;
+            color: #374151;
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 8px;
+            padding: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .clear-btn {
+            background: #ef4444;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn {
+            color: #047857;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .modal {
+            background: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body class="bg-emerald-50 min-h-screen">
+    <div class="max-w-lg mx-auto p-4">
+        <!-- Üst Bar -->
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-2xl font-bold text-emerald-800">Oyun Geçmişi</h1>
+            <div class="flex items-center space-x-4">
+                <button id="clearHistory" class="flex items-center bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+                    <i class="fas fa-trash-alt mr-2"></i>
+                    Geçmişi Temizle
+                </button>
+                <a href="index.html" class="flex items-center text-emerald-600 hover:text-emerald-700">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Ana Sayfa
+                </a>
+            </div>
+        </div>
+
+        <!-- Geçmiş Kartları -->
+        <div id="history-container" class="space-y-4">
+            <!-- Kartlar JavaScript ile eklenecek -->
+        </div>
+    </div>
+
+    <!-- Onay Modalı -->
+    <div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-6 mx-4 max-w-sm w-full">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Geçmişi Temizle</h3>
+            <p class="text-gray-600 mb-6">Tüm oyun geçmişiniz silinecek. Bu işlem geri alınamaz. Devam etmek istiyor musunuz?</p>
+            <div class="flex justify-end space-x-4">
+                <button id="cancelClear" class="px-4 py-2 text-gray-600 hover:text-gray-700 font-medium">
+                    İptal
+                </button>
+                <button id="confirmClear" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                    Evet, Temizle
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/history.js"></script>
+</body>
+</html>
