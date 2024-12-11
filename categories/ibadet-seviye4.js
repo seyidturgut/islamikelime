@@ -1,74 +1,109 @@
 const ibadet4Questions = [
-  {
-    turkish: "İbadet",
-    question: "Hangi durumda zekat vermek farz olmaz?",
-    options: ["Borcu malından fazla olanlar", "Malı nisab miktarına ulaşanlar", "Malı üzerinden bir yıl geçenler", "Akıl-baliğ olanlar"],
-    explanation: "Kişinin borcu malından fazla ise nisab miktarı mala sahip sayılmayacağı için zekat vermesi farz olmaz.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "İtikafın çeşitleri nelerdir?",
-    options: ["Vacip, sünnet, nafile", "Farz, vacip, sünnet", "Farz-ı ayn, farz-ı kifaye", "Müstehap, mekruh, haram"],
-    explanation: "İtikaf üç çeşittir: Vacip (adak), sünnet (Ramazan'ın son on günü), nafile (diğer zamanlarda yapılan).",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "Hangi durum namazda sehiv secdesi gerektirmez?",
-    options: ["Sünneti terk etmek", "Ta'dil-i erkanı terk", "Kunut dualarını okumamak", "Fatiha'yı sessiz okumak"],
-    explanation: "Sünnetlerin terki sehiv secdesi gerektirmez. Ta'dil-i erkan, kunut ve Fatiha'yı açıktan okunması gereken namazda sessiz okumak sehiv secdesi gerektirir.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "Haccın rükünleri hangileridir?",
-    options: ["İhram, vakfe, ziyaret tavafı", "İhram, sa'y, tıraş", "Vakfe, şeytan taşlama, kurban", "Tavaf, sa'y, telbiye"],
-    explanation: "Haccın rükünleri üçtür: İhrama girmek, Arafat'ta vakfe yapmak ve ziyaret (ifada) tavafı yapmak.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "Oruçta fidye kimlere verilir?",
-    options: ["Fakirlere", "Akrabalara", "Zenginlere", "Yolculara"],
-    explanation: "Oruç fidyesi, zekat verilebilecek olan fakirlere verilir. Bir günlük fidye miktarı bir fitre kadardır.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "Kurban etinin taksimi nasıl olmalıdır?",
-    options: ["Üçe bölünmesi müstehap", "Tamamı fakirlere verilmeli", "Tamamı evde kalmalı", "Yarısı dağıtılmalı"],
-    explanation: "Kurban etinin üçe bölünmesi müstehaptır: Bir bölümü ev halkına, bir bölümü akraba ve komşulara, bir bölümü de fakirlere verilir.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "Mestler üzerine mesh ne zaman başlar?",
-    options: ["Abdest bozulduğunda", "Mestler giyildiğinde", "İlk mesh yapıldığında", "Abdest alındığında"],
-    explanation: "Mesh süresi, mestler giyildikten sonraki ilk abdestin bozulmasıyla başlar, abdest alındığında veya mestler giyildiğinde değil.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "İtikafta hangi davranış mekruhtur?",
-    options: ["Dünya kelamı konuşmak", "Kur'an okumak", "İlim öğrenmek", "Zikir yapmak"],
-    explanation: "İtikafta dünya işleriyle ilgili konuşmak mekruhtur. İbadet, Kur'an okuma, ilim öğrenme ve zikir yapmak menduptur.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "Fıtır sadakası ne zaman vacip olur?",
-    options: ["Bayram günü fecr vakti", "Ramazan'ın son günü", "Bayramın birinci günü", "Arefe günü"],
-    explanation: "Fıtır sadakası Ramazan bayramının birinci günü fecr vaktinde (tan yeri ağarması) vacip olur.",
-    difficulty: 4
-  },
-  {
-    turkish: "İbadet",
-    question: "Zekatın sıhhat şartları nelerdir?",
-    options: ["Niyet, temlik, ehliyet", "Nisab, havl, artıcılık", "Bulûğ, akıl, zenginlik", "İslam, hürriyet, ikamet"],
-    explanation: "Zekatın sıhhat şartları: Niyet etmek (kalben), temlik (malı fakirin mülkiyetine geçirmek) ve ehliyet (akıl-baliğ olmak).",
-    difficulty: 4
-  }
+    {
+      turkish: "İbadet",
+      question: "Zekatın farz olması için gerekli nisab miktarı nedir?",
+      options: ["85 gram altın", "80.18 gram altın", "90 gram altın", "100 gram altın"],
+      explanation: "Zekatın farz olması için kişinin 85 gram altın veya bunun değerinde mala sahip olması gerekir.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Namazın rükünleri kaç tanedir?",
+      options: ["6 tane", "5 tane", "7 tane", "8 tane"],
+      explanation: "Namazın rükünleri 6 tanedir: İftitah tekbiri, kıyam, kıraat, rükû, secde ve ka'de-i ahire.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Hac çeşitleri nelerdir?",
+      options: ["İfrad, temettu, kıran", "İfrad, umre, tavaf", "Temettu, sa'y, vakfe", "Kıran, ihram, tavaf"],
+      explanation: "Üç çeşit hac vardır: İfrad (sadece hac), temettu (umre+hac), kıran (umre ve hac birlikte) haccı.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Yolcunun mesh süresi ne kadardır?",
+      options: ["72 saat", "24 saat", "48 saat", "96 saat"],
+      explanation: "Yolcu (seferi) olan kişinin mest üzerine mesh süresi 72 saattir.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Vitir namazının hükmü nedir?",
+      options: ["Vacip", "Farz", "Sünnet", "Müstehap"],
+      explanation: "Vitir namazı Hanefi mezhebine göre vaciptir, diğer mezheplere göre sünnettir.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Tilavet secdesi ne zaman yapılır?",
+      options: ["Secde ayeti okunduğunda", "Her namazda", "Her rekatta", "Her secdede"],
+      explanation: "Tilavet secdesi, Kur'an-ı Kerim'de geçen secde ayetleri okunduğunda veya dinlendiğinde yapılır.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Namazda kaç çeşit secde vardır?",
+      options: ["4 çeşit", "2 çeşit", "3 çeşit", "5 çeşit"],
+      explanation: "Namazda 4 çeşit secde vardır: Tilavet secdesi, sehiv secdesi, şükür secdesi ve namaz secdesi.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Şükür secdesi ne zaman yapılır?",
+      options: ["Nimet geldiğinde", "Her namazda", "Her gün", "Her hafta"],
+      explanation: "Şükür secdesi bir nimet veya sevinçli bir haber geldiğinde yapılır.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Arafat vakfesinin zamanı nedir?",
+      options: ["Zilhicce 9. günü", "Zilhicce 10. günü", "Zilhicce 8. günü", "Zilhicce 11. günü"],
+      explanation: "Arafat vakfesi, Zilhicce ayının 9. günü öğle vaktinden bayram sabahına kadar yapılır.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Hangi maldan zekat verilmez?",
+      options: ["Oturulan ev", "Ticaret malı", "Para", "Altın"],
+      explanation: "Temel ihtiyaç için kullanılan mallardan (ev, araba gibi) zekat verilmez.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Oruçlu iken yapılması mekruh olan şey nedir?",
+      options: ["Bir şey tatmak", "Su ile gargara yapmak", "Misvak kullanmak", "Duş almak"],
+      explanation: "Oruçlu iken bir şey tatmak mekruhtur.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Namazda 'huşu' ne demektir?",
+      options: ["Kalbin Allah'a yönelmesi", "Hızlı kılmak", "Yavaş kılmak", "Sesli kılmak"],
+      explanation: "Huşu, kalbin Allah'a yönelmesi ve namazın manasını düşünmektir.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Tavafın şartlarından biri nedir?",
+      options: ["Kabe'yi soluna almak", "Kabe'yi sağına almak", "Kabe'ye arkası dönük olmak", "Kabe'ye uzak olmak"],
+      explanation: "Tavaf ederken Kabe'yi sol tarafa almak şarttır.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "Hangi durumda fidye vermek gerekir?",
+      options: ["Yaşlılıktan oruç tutamama", "Yolculuk", "Hastalık", "Unutma"],
+      explanation: "Yaşlılık sebebiyle oruç tutamayan kişinin fidye vermesi gerekir.",
+      difficulty: 4
+    },
+    {
+      turkish: "İbadet",
+      question: "İhramdan çıkmak için ne yapılır?",
+      options: ["Tıraş olmak veya saç kesmek", "Gusül abdesti almak", "Kurban kesmek", "Tavaf yapmak"],
+      explanation: "İhramdan çıkmak için tıraş olmak veya saç kesmek gerekir.",
+      difficulty: 4
+    }
 ];
 
 window.ibadet4Questions = ibadet4Questions;

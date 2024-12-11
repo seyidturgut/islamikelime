@@ -1,0 +1,36 @@
+.categories-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: auto;
+    max-width: 1200px;
+    padding: 2rem;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+#header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    padding: 15px;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+#game-container {
+    position: relative;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+}

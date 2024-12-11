@@ -1,0 +1,66 @@
+#gameOverScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.game-over-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+.game-over-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.correct-title {
+    color: var(--correct-color);
+}
+
+.wrong-title {
+    color: var(--wrong-color);
+}
+
+.answer-button {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background: white;
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.answer-button:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.answer-button.correct {
+    background: var(--correct-color);
+    border-color: var(--correct-color);
+    color: white;
+}
+
+.answer-button.wrong {
+    background: var(--wrong-color);
+    border-color: var(--wrong-color);
+    color: white;
+}

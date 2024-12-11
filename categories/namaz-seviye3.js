@@ -1,179 +1,124 @@
 const namaz3Questions = [
   {
     turkish: "Namaz",
-    question: "Sehiv secdesi hangi durumlarda yapılır?",
-    options: ["Namazın vaciplerinden birini unutunca", "Her namazdan sonra", "Sadece farz namazlarda", "Sadece sünnetlerde"],
-    explanation: "Sehiv secdesi, namazın vaciplerinden birini unutarak terk etme veya geciktirme durumunda yapılır.",
+    question: "Hangi durumda namazları cem etmek (birleştirmek) caizdir?",
+    options: ["Seyahat halinde", "Evde", "İş yerinde", "Okulda"],
+    correctAnswer: "Seyahat halinde",
+    explanation: "Seyahat halinde öğle ile ikindi, akşam ile yatsı namazlarını cem ederek kılmak caizdir.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Vitir namazının hükmü nedir?",
-    options: ["Vacip", "Farz", "Sünnet", "Müstehap"],
-    explanation: "Vitir namazı Hanefi mezhebine göre vaciptir.",
+    question: "Namaz kılarken giyilen kıyafette bulunması gereken özellik hangisi değildir?",
+    options: ["Yeni olması", "Temiz olması", "Avret yerlerini örtmesi", "Helal yoldan edinilmiş olması"],
+    correctAnswer: "Yeni olması",
+    explanation: "Namaz kıyafetinin yeni olması şart değildir. Önemli olan temiz, avret yerlerini örten ve helal yoldan edinilmiş olmasıdır.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Namaza 'müdrik' olarak yetişmek ne demektir?",
-    options: ["İmamla birlikte rükûya yetişmek", "Sadece son oturuşa yetişmek", "Namazın yarısına yetişmek", "Sadece selamı beklemek"],
-    explanation: "Müdrik, imamla birlikte en az bir rekatın rükûsuna yetişen kişiye denir.",
+    question: "Cemaatle namazda imama uymak için hangi tekbirden sonra gelinirse namaz geçerli olur?",
+    options: ["İftitah tekbirinden", "Rükû tekbirinden", "İlk oturuştan", "Son oturuştan"],
+    correctAnswer: "İftitah tekbirinden",
+    explanation: "Cemaatle namaza katılmak için iftitah tekbirinden sonra gelinirse namaz geçerli olmaz, o rekat kaçırılmış sayılır.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Aşağıdakilerden hangisi namazı bozmaz?",
-    options: ["Az bir hareket", "Konuşmak", "Gülmek", "Yemek yemek"],
-    explanation: "Namazda az bir hareket (örneğin bir adım atmak, kaşınmak) namazı bozmaz.",
+    question: "Seferî (yolcu) bir kimse dört rekatlı farz namazları kaç rekat kılar?",
+    options: ["2 rekat", "3 rekat", "4 rekat", "5 rekat"],
+    correctAnswer: "2 rekat",
+    explanation: "Seferî durumunda olan kişi, 4 rekatlı farz namazları 2 rekat olarak kılar (kasr-ı salat).",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Cuma namazının sıhhat şartlarından biri nedir?",
-    options: ["Hutbe okunması", "Öğle vaktinde kılınması", "Cemaatle kılınması", "Hepsi"],
-    explanation: "Hutbe okunması, öğle vaktinde ve cemaatle kılınması Cuma namazının sıhhat şartlarındandır.",
+    question: "Tilâvet secdesi ne zaman yapılır?",
+    options: ["Secde ayeti okunduğunda", "Her namazdan sonra", "Cuma namazlarında", "Bayram namazlarında"],
+    correctAnswer: "Secde ayeti okunduğunda",
+    explanation: "Kur'an-ı Kerim'de geçen secde ayetleri okunduğunda veya dinlendiğinde tilâvet secdesi yapmak vacibtir.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Namazda 'setri avret' ne demektir?",
-    options: ["Avret yerlerinin örtülmesi", "Kıbleye dönmek", "Abdest almak", "Niyet etmek"],
-    explanation: "Setri avret, namazda avret yerlerinin örtülmesi demektir ve namazın şartlarındandır.",
+    question: "Namazda Fatiha Suresi'nden sonra zamm-ı sure okumak hangi durumlarda vaciptir?",
+    options: ["İlk iki rekatta", "Her rekatta", "Son iki rekatta", "Sadece son rekatta"],
+    correctAnswer: "İlk iki rekatta",
+    explanation: "Farz namazların ilk iki rekatında, sünnet ve nafile namazların her rekatında Fatiha'dan sonra zamm-ı sure okumak vaciptir.",
     difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Hangisi cemaatin faziletini artıran durumlardan değildir?",
-    options: ["Camiden uzak oturmak", "İlk safta olmak", "İmama yakın olmak", "Erken gelmek"],
-    explanation: "Camiden uzak oturmak fazileti artırmaz, aksine camiye yakın olmak ve erken gelmek fazileti artırır.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Hangi durumda namazı bozan bir gülme söz konusudur?",
-    options: ["Kahkaha ile gülmek", "Gülümsemek", "İçinden gülmek", "Tebessüm etmek"],
-    explanation: "Kahkaha ile (yanındakinin duyacağı şekilde) gülmek namazı bozar ve abdesti de bozar.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "İmama uyan kişi hangi durumda 'mesbuk' sayılır?",
-    options: ["Namazın başına yetişemeyen", "Namazın sonuna yetişen", "Namaza erken gelen", "İmamdan önce gelen"],
-    explanation: "Mesbuk, namazın başına yetişemeyip sonradan imama uyan kişidir.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Namaza sonradan yetişen (mesbuk) kişi, imam selam verdikten sonra ne yapar?",
-    options: ["Kaçırdığı rekatları tamamlar", "Namazı baştan kılar", "Hemen selam verir", "Sehiv secdesi yapar"],
-    explanation: "Mesbuk, imam selam verdikten sonra kalkıp kaçırdığı rekatları tamamlar.",
-    difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
     question: "Aşağıdakilerden hangisi namazın mekruhlarından değildir?",
-    options: ["Sübhanallah demek", "Elbiseyle oynamak", "Esnemek", "Parmakları çıtlatmak"],
-    explanation: "Namazda zikir olan 'Sübhanallah' demek mekruh değildir.",
+    options: ["Ta'dil-i erkana riayet etmek", "Elbise ile oynamak", "Özürsüz bir şeye dayanmak", "Secdede kolları yere yaymak"],
+    correctAnswer: "Ta'dil-i erkana riayet etmek",
+    explanation: "Ta'dil-i erkana riayet etmek (rükünleri düzgün yapmak) namazın mekruhlarından değil, aksine vaciblerindendir.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Namazın son oturuşunda neler farzdır?",
-    options: ["Tahiyyat duasını okumak", "Salavat okumak", "Rabbena dualarını okumak", "Kunut dualarını okumak"],
-    explanation: "Son oturuşta sadece Tahiyyat duasını okumak farzdır, diğerleri vacip veya sünnettir.",
+    question: "Namazda ta'dil-i erkan ne demektir?",
+    options: ["Rükünleri tam yapmak", "Hızlı kılmak", "Sünneti terk etmek", "Cemaatle kılmak"],
+    correctAnswer: "Rükünleri tam yapmak",
+    explanation: "Ta'dil-i erkan, namazın rükünlerini acele etmeden, tam ve düzgün bir şekilde yerine getirmek demektir.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Cemaatle namaz kılarken imama hangi durumda uyulmaz?",
-    options: ["İmam abdestsiz olduğu bilinirse", "İmam hızlı kıldırıyorsa", "İmam yaşlıysa", "İmam hafız değilse"],
-    explanation: "İmamın abdestsiz olduğu kesin olarak biliniyorsa ona uyulmaz.",
+    question: "Mestler üzerine mesh süresi mukim için kaç gündür?",
+    options: ["1 gün", "2 gün", "3 gün", "4 gün"],
+    correctAnswer: "1 gün",
+    explanation: "Mukim (yolcu olmayan) kişiler için mestler üzerine mesh süresi 24 saattir (1 gün).",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Namazda 'tadil-i erkanı' terk eden kişi ne yapmalıdır?",
-    options: ["Sehiv secdesi yapar", "Namazı iade eder", "Kaza eder", "Bir şey gerekmez"],
-    explanation: "Tadil-i erkanı terk eden kişi sehiv secdesi yapmalıdır.",
+    question: "Hangisi namazı bozan bir gülme şekli değildir?",
+    options: ["Tebessüm etmek", "Kahkaha atmak", "Yanındakine duyuracak şekilde gülmek", "Kendisi duyacak şekilde gülmek"],
+    correctAnswer: "Tebessüm etmek",
+    explanation: "Tebessüm etmek namazı bozmaz. Ancak kahkaha atmak hem namazı hem de abdesti bozar.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Sehiv secdesini unutarak yapmayan kişi ne yapmalıdır?",
-    options: ["Hatırladığında yapar", "Namazı iade eder", "Kaza eder", "Sadaka verir"],
-    explanation: "Sehiv secdesini unutarak yapmayan kişi, hatırladığında yapması gerekmez.",
+    question: "Hangi durumda imama uyan kişi Fatiha okumaz?",
+    options: ["Cemaatle kılınan sesli namazlarda", "Cemaatle kılınan sessiz namazlarda", "Cuma namazında", "Bayram namazında"],
+    correctAnswer: "Cemaatle kılınan sesli namazlarda",
+    explanation: "İmam sesli okuduğu namazlarda (sabah, akşam, yatsı) cemaat Fatiha okumaz, imamı dinler.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Aşağıdakilerden hangisi 'namazın adabından' değildir?",
-    options: ["Rukûda elleri dizlere koymak", "Secde yerini gözetlemek", "Ayakları kıbleye doğru uzatmak", "Ezanı dinlemek"],
-    explanation: "Namazda ayakları kıbleye doğru uzatmak namazın adabından değil, mekruhlarındandır.",
+    question: "Aşağıdakilerden hangisi namazda yapılan hata için sehiv secdesi gerektirmez?",
+    options: ["Nafile bir rüknü eksik yapmak", "Farzı geciktirmek", "Vacibi terk etmek", "Vacibi geciktirmek"],
+    correctAnswer: "Nafile bir rüknü eksik yapmak",
+    explanation: "Nafile bir rüknü eksik yapmak sehiv secdesi gerektirmez. Farzı geciktirmek, vacibi terk etmek veya geciktirmek sehiv secdesi gerektirir.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Namazda kıraat ile ilgili aşağıdakilerden hangisi doğrudur?",
-    options: ["Sabah ve akşamda açıktan okunur", "Her namazda gizli okunur", "Her namazda açık okunur", "Sadece öğle ve ikindide gizli okunur"],
-    explanation: "Sabah ve akşam namazlarında kıraat açıktan (cehri) yapılır.",
+    question: "İmama uyan kişinin namazı hangi durumda geçerli olmaz?",
+    options: ["İmamdan önce rükün yapması", "İmamla beraber tekbir alması", "İmamdan sonra rükün yapması", "İmamı beklemesi"],
+    correctAnswer: "İmamdan önce rükün yapması",
+    explanation: "İmama uyan kişi, imamdan önce rükün yaparsa namazı geçerli olmaz. İmamın hareketlerini takip etmesi gerekir.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Namaza başlarken unutulan niyeti namazın neresine kadar yapmak geçerlidir?",
-    options: ["Kıraate kadar", "Rükûya kadar", "İlk oturuşa kadar", "Son oturuşa kadar"],
-    explanation: "Namaza başlarken unutulan niyet kıraate kadar yapılabilir.",
+    question: "Bayram namazlarında fazladan kaç tekbir alınır?",
+    options: ["6 tekbir", "4 tekbir", "5 tekbir", "7 tekbir"],
+    correctAnswer: "6 tekbir",
+    explanation: "Bayram namazlarında her rekatta 3'er tane olmak üzere toplam 6 fazla tekbir alınır.",
     difficulty: 3
-  },
-  {
+},
+{
     turkish: "Namaz",
-    question: "Seferilik (yolculuk) hali için mesafe şartı nedir?",
-    options: ["90 km ve üzeri", "50 km ve üzeri", "100 km ve üzeri", "80 km ve üzeri"],
-    explanation: "Seferilik için gidilecek mesafenin 90 km veya daha fazla olması gerekir.",
+    question: "Cuma namazının sahih olması için asgari cemaat sayısı kaçtır?",
+    options: ["3 kişi", "7 kişi", "12 kişi", "40 kişi"],
+    correctAnswer: "40 kişi",
+    explanation: "Hanefi mezhebine göre Cuma namazının sahih olması için imam hariç en az 40 kişilik cemaat gereklidir.",
     difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Teşrik tekbirleri ne zamana kadar getirilir?",
-    options: ["Kurban bayramı 4. gün ikindiye kadar", "Bayramın 1. günü", "Bayramın 2. günü", "Bayramın 3. günü"],
-    explanation: "Teşrik tekbirleri Kurban bayramının 4. günü ikindi namazına kadar getirilir.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Farz namazlarda Fatiha'dan sonra sure veya ayet okumanın hükmü nedir?",
-    options: ["Vacip", "Farz", "Sünnet", "Müstehap"],
-    explanation: "Farz namazlarda Fatiha'dan sonra sure veya ayet okumak vaciptir.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Bayram tekbirlerinin hükmü nedir?",
-    options: ["Vacip", "Farz", "Sünnet", "Müstehap"],
-    explanation: "Bayram namazlarındaki fazladan getirilen tekbirler vaciptir.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Namazda yapılan hareketlerin dereceleri hangi sıraya göre dizilir?",
-    options: ["Rükün-Vacip-Sünnet-Müstehap", "Vacip-Rükün-Sünnet-Müstehap", "Sünnet-Vacip-Rükün-Müstehap", "Müstehap-Sünnet-Vacip-Rükün"],
-    explanation: "Namazda yapılan hareketlerin önem sırası: Rükün, Vacip, Sünnet, Müstehap şeklindedir.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Namazda 'hades' ne demektir?",
-    options: ["Abdesti bozan şey", "Namazı bozan şey", "Mekruh olan şey", "Sünnet olan şey"],
-    explanation: "Hades, abdesti bozan durum demektir.",
-    difficulty: 3
-  },
-  {
-    turkish: "Namaz",
-    question: "Aşağıdakilerden hangisi namazı bozan bir konuşma sayılmaz?",
-    options: ["Hapşırana yerhamükellah demek", "Selam almak", "Dünyevi konuşma", "İmama cevap vermek"],
-    explanation: "Hapşırana yerhamükellah demek namazı bozan bir konuşma sayılmaz.",
-    difficulty: 3
-  }
+}
 ];
 
 window.namaz3Questions = namaz3Questions;

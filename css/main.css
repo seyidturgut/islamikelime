@@ -1,0 +1,55 @@
+/* Base */
+@import 'base/variables.css';
+@import 'base/reset.css';
+@import 'base/typography.css';
+
+/* Components */
+@import 'components/buttons.css';
+@import 'components/cards.css';
+@import 'components/game.css';
+@import 'components/header.css';
+@import 'components/score.css';
+
+/* Layouts */
+@import 'layouts/grid.css';
+@import 'layouts/responsive.css';
+
+/* Pages */
+@import 'pages/welcome.css';
+@import 'pages/categories.css';
+@import 'pages/game-screen.css';
+
+/* Game specific styles */
+.option-button {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.option-button.correct {
+    background-color: #10b981 !important;
+    color: white !important;
+}
+
+.option-button.wrong {
+    background-color: #ef4444 !important;
+    color: white !important;
+}
+
+.option-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Animations */
+.animate__animated {
+    animation-duration: 0.5s;
+}
+
+/* Font */
+@font-face {
+    font-family: 'Uthman';
+    src: url('/font/UthmanTN_v2-0.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -5,140 +5,623 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İslami Kelime Oyunu - Kategoriler</title>
     <link rel="preload" href="/font/UthmanTN_v2-0.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="style.css?v=1.1">
-    <style>
-        .level-select {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .level-container {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 90%;
-            width: 400px;
-            animation: fadeIn 0.3s;
-        }
-        
-        .level-title {
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-        }
-        
-        .level-grid {
-            display: grid;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .level-button {
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: #3498db;
-            color: white;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-            font-size: 1rem;
-        }
-        
-        .level-button:hover {
-            transform: translateY(-2px);
-            background: #2980b9;
-        }
-        
-        .level-close {
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            background: #e74c3c;
-            color: white;
-            cursor: pointer;
-        }
-        
-        .level-close:hover {
-            background: #c0392b;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/categories.css">
 </head>
-<body>
-    <div class="categories-container">
-        <h1 class="categories-title">Kategori Seçin</h1>
-        <p class="categories-subtitle">Hangi kategoride oynamak istersiniz?</p>
+<body class="bg-gradient-to-br from-emerald-50 to-teal-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8 relative min-h-screen">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-emerald-800 mb-4">Kategori Seçin</h1>
+            <p class="text-lg text-emerald-600">Hangi kategoride oynamak istersiniz?</p>
+        </div>
         
-        <div class="category-grid">
-            <div class="category-card" onclick="showLevels('namaz')">
-                <div class="category-icon">🕌</div>
-                <h2>Namaz</h2>
-                <p>Namaz ile ilgili terimler</p>
-                <div class="category-hover">Seviye Seç</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-24">
+            <!-- Namaz Kategorisi -->
+            <div data-modal-target="namazLevelSelect" data-modal-toggle="namazLevelSelect"
+                 class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl">🕌</div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-emerald-800">Namaz</h2>
+                        <p class="text-emerald-600">Namaz ile ilgili terimler</p>
+                    </div>
+                    <div class="text-emerald-500">
+                        <i class="fas fa-chevron-right text-xl"></i>
+                    </div>
+                </div>
             </div>
 
-            <a href="game.html?category=ahlak" class="category-card">
-                <div class="category-icon">💝</div>
-                <h2>Ahlak</h2>
-                <p>İslami ahlak terimleri</p>
-                <div class="category-hover">Başla</div>
-            </a>
-
-            <div class="category-card" onclick="showLevels('ibadet')">
-                <div class="category-icon">🤲</div>
-                <h2>İbadet</h2>
-                <p>İbadet ile ilgili terimler</p>
-                <div class="category-hover">Seviye Seç</div>
+            <!-- Ahlak Kategorisi -->
+            <div data-modal-target="ahlakLevelSelect" data-modal-toggle="ahlakLevelSelect"
+                 class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl">💝</div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-emerald-800">Ahlak</h2>
+                        <p class="text-emerald-600">İslami ahlak terimleri</p>
+                    </div>
+                    <div class="text-emerald-500">
+                        <i class="fas fa-chevron-right text-xl"></i>
+                    </div>
+                </div>
             </div>
 
-            <a href="game.html?category=genel" class="category-card">
-                <div class="category-icon">📚</div>
-                <h2>Genel</h2>
-                <p>Genel İslami terimler</p>
-                <div class="category-hover">Başla</div>
-            </a>
+            <!-- İbadet Kategorisi -->
+            <div data-modal-target="ibadetLevelSelect" data-modal-toggle="ibadetLevelSelect"
+                 class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl">🤲</div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-emerald-800">İbadet</h2>
+                        <p class="text-emerald-600">İbadet ile ilgili terimler</p>
+                    </div>
+                    <div class="text-emerald-500">
+                        <i class="fas fa-chevron-right text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Genel Kategori -->
+            <div data-modal-target="genelLevelSelect" data-modal-toggle="genelLevelSelect"
+                 class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer">
+                <div class="flex items-center space-x-4">
+                    <div class="text-4xl">📚</div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-emerald-800">Genel</h2>
+                        <p class="text-emerald-600">Genel İslami terimler</p>
+                    </div>
+                    <div class="text-emerald-500">
+                        <i class="fas fa-chevron-right text-xl"></i>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <a href="index.html" class="back-button">Ana Sayfaya Dön</a>
-    </div>
-
-    <!-- Seviye Seçim Ekranı -->
-    <div id="levelSelect" class="level-select">
-        <div class="level-container">
-            <h2 class="level-title">Seviye Seçin</h2>
-            <div class="level-grid">
-                <button class="level-button" onclick="selectLevel(1)">En Kolay</button>
-                <button class="level-button" onclick="selectLevel(2)">Kolay</button>
-                <button class="level-button" onclick="selectLevel(3)">Normal</button>
-                <button class="level-button" onclick="selectLevel(4)">Zor</button>
+        <!-- Ana Sayfaya Dön Butonu -->
+        <div class="fixed bottom-0 left-0 w-full bg-gradient-to-t from-white via-white to-transparent py-4">
+            <div class="container mx-auto px-4">
+                <a href="index.html" 
+                   class="flex items-center justify-center space-x-2 bg-emerald-500 hover:bg-emerald-600 text-white py-3 px-6 rounded-lg shadow-lg transform hover:-translate-y-0.5 transition-all mx-auto w-full md:w-auto">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Ana Sayfaya Dön</span>
+                </a>
             </div>
-            <button class="level-close" onclick="hideLevels()">Kapat</button>
         </div>
     </div>
 
+    <!-- Namaz Seviye Seçimi -->
+    <div id="namazLevelSelect" tabindex="-1" aria-hidden="true" 
+         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-4xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-2xl shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <div>
+                        <h3 class="text-2xl font-bold text-emerald-800">Namaz - Seviye Seçin</h3>
+                        <p class="text-emerald-600 mt-1">Her seviye gittikçe zorlaşan terimler içerir</p>
+                    </div>
+                    <button type="button" 
+                            class="text-gray-400 bg-transparent hover:text-gray-500 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                            data-modal-hide="namazLevelSelect">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-2 sm:p-4">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
+                        <!-- Seviye 1 -->
+                        <button onclick="startLevel('namaz', 1)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">1</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 1</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 2 -->
+                        <button onclick="startLevel('namaz', 2)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">2</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 2</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 3 -->
+                        <button onclick="startLevel('namaz', 3)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">3</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 3</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 4 -->
+                        <button onclick="startLevel('namaz', 4)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">4</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 4</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 5 -->
+                        <button onclick="startLevel('namaz', 5)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">5</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 5</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 6 -->
+                        <button onclick="startLevel('namaz', 6)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">6</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 6</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 7 -->
+                        <button onclick="startLevel('namaz', 7)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">7</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 7</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 8 -->
+                        <button onclick="startLevel('namaz', 8)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">8</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 8</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 9 -->
+                        <button onclick="startLevel('namaz', 9)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">9</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 9</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 10 -->
+                        <button onclick="startLevel('namaz', 10)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">10</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 10</h4>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İbadet Seviye Seçimi -->
+    <div id="ibadetLevelSelect" tabindex="-1" aria-hidden="true" 
+         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-4xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-2xl shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-2xl font-bold text-emerald-800">İbadet - Seviye Seçin</h3>
+                    <button type="button" 
+                            class="text-gray-400 bg-transparent hover:text-gray-500 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                            data-modal-hide="ibadetLevelSelect">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-2 sm:p-4">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
+                        <!-- Seviye 1 -->
+                        <button onclick="startLevel('ibadet', 1)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">1</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 1</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 2 -->
+                        <button onclick="startLevel('ibadet', 2)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">2</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 2</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 3 -->
+                        <button onclick="startLevel('ibadet', 3)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">3</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 3</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 4 -->
+                        <button onclick="startLevel('ibadet', 4)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">4</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 4</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 5 -->
+                        <button onclick="startLevel('ibadet', 5)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">5</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 5</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 6 -->
+                        <button onclick="startLevel('ibadet', 6)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">6</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 6</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 7 -->
+                        <button onclick="startLevel('ibadet', 7)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">7</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 7</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 8 -->
+                        <button onclick="startLevel('ibadet', 8)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">8</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 8</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 9 -->
+                        <button onclick="startLevel('ibadet', 9)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">9</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 9</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 10 -->
+                        <button onclick="startLevel('ibadet', 10)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">10</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 10</h4>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ahlak Seviye Seçimi -->
+    <div id="ahlakLevelSelect" tabindex="-1" aria-hidden="true" 
+         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-4xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-2xl shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-2xl font-bold text-emerald-800">Ahlak - Seviye Seçin</h3>
+                    <button type="button" 
+                            class="text-gray-400 bg-transparent hover:text-gray-500 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                            data-modal-hide="ahlakLevelSelect">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-2 sm:p-4">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
+                        <!-- Seviye 1 -->
+                        <button onclick="startLevel('ahlak', 1)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">1</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 1</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 2 -->
+                        <button onclick="startLevel('ahlak', 2)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">2</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 2</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 3 -->
+                        <button onclick="startLevel('ahlak', 3)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">3</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 3</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 4 -->
+                        <button onclick="startLevel('ahlak', 4)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">4</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 4</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 5 -->
+                        <button onclick="startLevel('ahlak', 5)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">5</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 5</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 6 -->
+                        <button onclick="startLevel('ahlak', 6)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">6</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 6</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 7 -->
+                        <button onclick="startLevel('ahlak', 7)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">7</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 7</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 8 -->
+                        <button onclick="startLevel('ahlak', 8)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">8</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 8</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 9 -->
+                        <button onclick="startLevel('ahlak', 9)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">9</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 9</h4>
+                            </div>
+                        </button>
+
+                        <!-- Seviye 10 -->
+                        <button onclick="startLevel('ahlak', 10)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">10</span>
+                                </div>
+                                <h4 class="text-sm sm:text-lg font-semibold text-emerald-800">Seviye 10</h4>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Genel Seviye Seçimi -->
+    <div id="genelLevelSelect" tabindex="-1" aria-hidden="true" 
+         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-4xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-2xl shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-2xl font-bold text-emerald-800">Genel - Seviye Seçin</h3>
+                    <button type="button" 
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                            data-modal-hide="genelLevelSelect">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-2 sm:p-4">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4">
+                        <!-- Seviye 1 -->
+                        <button onclick="startLevel('genel', 1)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">1</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 1</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 2 -->
+                        <button onclick="startLevel('genel', 2)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">2</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 2</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 3 -->
+                        <button onclick="startLevel('genel', 3)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">3</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 3</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 4 -->
+                        <button onclick="startLevel('genel', 4)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">4</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 4</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 5 -->
+                        <button onclick="startLevel('genel', 5)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">5</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 5</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 6 -->
+                        <button onclick="startLevel('genel', 6)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">6</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 6</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 7 -->
+                        <button onclick="startLevel('genel', 7)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">7</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 7</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 8 -->
+                        <button onclick="startLevel('genel', 8)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">8</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 8</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 9 -->
+                        <button onclick="startLevel('genel', 9)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">9</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 9</h4>
+                            </div>
+                        </button>
+                        <!-- Seviye 10 -->
+                        <button onclick="startLevel('genel', 10)" 
+                                class="level-button relative group bg-emerald-50 hover:bg-emerald-100 rounded-xl p-2 sm:p-4 transition-all duration-300 hover:shadow-lg">
+                            <div class="text-center">
+                                <div class="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3 group-hover:bg-emerald-200 transition-colors">
+                                    <span class="text-xl sm:text-2xl text-emerald-600 font-bold">10</span>
+                                </div>
+                                <h4 class="text-sm sm:text-base font-semibold text-emerald-700">Seviye 10</h4>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script>
-        let selectedCategory = '';
-
-        function showLevels(category) {
-            selectedCategory = category;
-            document.getElementById('levelSelect').style.display = 'flex';
-        }
-
-        function hideLevels() {
-            document.getElementById('levelSelect').style.display = 'none';
-        }
-
-        function selectLevel(level) {
-            window.location.href = `game.html?category=${selectedCategory}&level=${level}`;
+        function startLevel(category, level) {
+            window.location.href = `game.html?category=${category}&level=${level}`;
         }
     </script>
 </body>

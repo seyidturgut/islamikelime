@@ -1,0 +1,78 @@
+/* Custom styles for home page */
+.main-button {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.main-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+}
+
+.main-button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Tutorial steps animation */
+.prose .space-y-4 > div {
+    transition: transform 0.3s ease;
+}
+
+.prose .space-y-4 > div:hover {
+    transform: translateX(10px);
+}
+
+/* Modal animations */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+    .container {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .main-button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Gradient text animation */
+@keyframes gradientText {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1.text-emerald-800 {
+    background: linear-gradient(
+        120deg,
+        #047857,
+        #059669,
+        #10b981
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradientText 3s ease infinite;
+}

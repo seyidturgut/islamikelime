@@ -1,74 +1,109 @@
 const ibadet3Questions = [
-  {
-    turkish: "İbadet",
-    question: "Zekatın farz olması için gerekli nisab miktarı nedir?",
-    options: ["85 gram altın", "80.18 gram altın", "90 gram altın", "100 gram altın"],
-    explanation: "Zekatın farz olması için kişinin 85 gram altın veya bunun değerinde mala sahip olması gerekir.",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Tilavet secdesi hangi durumlarda yapılır?",
-    options: ["Secde ayeti okunduğunda", "Her namazda", "Sadece yatsı namazında", "Sadece cuma namazında"],
-    explanation: "Tilavet secdesi, Kur'an-ı Kerim'de geçen secde ayetleri okunduğunda veya dinlendiğinde yapılır.",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Namazda kaç çeşit secde vardır?",
-    options: ["4 çeşit", "2 çeşit", "3 çeşit", "5 çeşit"],
-    explanation: "Namazda 4 çeşit secde vardır: Tilavet secdesi, sehiv secdesi, şükür secdesi ve namaz secdesi (rükün olan secde).",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Mukimin mesh süresi ne kadardır?",
-    options: ["24 saat", "48 saat", "72 saat", "12 saat"],
-    explanation: "Mukim (yolcu olmayan) kişinin mest üzerine mesh süresi 24 saattir.",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Namazı bozan durumlar nelerdir?",
-    options: ["Konuşmak, gülmek, yemek", "Öksürmek, hapşırmak", "Ağlamak, iç çekmek", "Kıbleye dönmek"],
-    explanation: "Namazı bozan başlıca durumlar: Konuşmak, kahkaha ile gülmek, yemek-içmek, namazla ilgisi olmayan hareketler yapmaktır.",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Beş vakit namazın sünnetlerinin toplam rekat sayısı kaçtır?",
-    options: ["13", "10", "15", "20"],
-    explanation: "Beş vakit namazın sünnetleri: Sabah (2), öğle (4+2), ikindi (4), akşam (2), yatsı (2) olmak üzere toplam 13 rekattır.",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Hac çeşitleri nelerdir?",
-    options: ["İfrad, temettu, kıran", "İfrad, umre, tavaf", "Temettu, sa'y, vakfe", "Kıran, ihram, tavaf"],
-    explanation: "Üç çeşit hac vardır: İfrad (sadece hac), temettu (umre+hac), kıran (umre ve hac birlikte) haccı.",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Yolcunun mesh süresi ne kadardır?",
-    options: ["72 saat", "24 saat", "48 saat", "96 saat"],
-    explanation: "Yolcu (seferi) olan kişinin mest üzerine mesh süresi 72 saattir.",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Namazın rükünleri hangileridir?",
-    options: ["İftitah tekbiri, kıyam, kıraat, rükû, sücud, ka'de-i ahire", "Sübhaneke, Fatiha, Tahiyyat", "Eûzü besmele, sure, selam", "Tekbir, tesbih, dua"],
-    explanation: "Namazın rükünleri 6 tanedir: İftitah tekbiri (Allahu ekber), kıyam (ayakta durmak), kıraat (Kur'an okumak), rükû (eğilmek), sücud (secde), ka'de-i ahire (son oturuş).",
-    difficulty: 3
-  },
-  {
-    turkish: "İbadet",
-    question: "Vitir namazının hükmü nedir?",
-    options: ["Vacip", "Farz", "Sünnet", "Müstehap"],
-    explanation: "Vitir namazı Hanefi mezhebine göre vaciptir, diğer mezheplere göre sünnettir.",
-    difficulty: 3
-  }
+    {
+      turkish: "İbadet",
+      question: "Zekat hangi mallardan verilir?",
+      options: ["Altın, gümüş, para, ticaret malları", "Sadece altından", "Sadece paradan", "Sadece gümüşten"],
+      explanation: "Zekat; altın, gümüş, para, ticaret malları, büyükbaş ve küçükbaş hayvanlar, toprak ürünleri gibi mallardan verilir.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Zekatın miktarı nedir?",
+      options: ["Malın kırkta biri", "Malın onda biri", "Malın yarısı", "Malın tamamı"],
+      explanation: "Zekat, malın kırkta biri (% 2.5) oranında verilir.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Hac ibadetinin farz olan rükünleri kaç tanedir?",
+      options: ["3 tane", "2 tane", "4 tane", "5 tane"],
+      explanation: "Haccın farz olan rükünleri ihrama girmek, vakfe yapmak ve ziyaret tavafı olmak üzere 3 tanedir.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Hangi durumda hem kaza hem kefaret gerekir?",
+      options: ["Ramazan orucunu bilerek bozmak", "Nafile orucu bozmak", "Kaza orucunu bozmak", "Adak orucunu bozmak"],
+      explanation: "Ramazan orucunu bilerek bozmak hem kaza hem kefaret gerektirir.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "İtikafın en az süresi ne kadardır?",
+      options: ["Bir gün", "Bir saat", "Bir hafta", "Bir ay"],
+      explanation: "İtikafın en az süresi bir gündür.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Tavaf namazı nerede kılınır?",
+      options: ["Makam-ı İbrahim'de", "Safa'da", "Merve'de", "Arafat'ta"],
+      explanation: "Tavaf namazı Makam-ı İbrahim'de veya Mescid-i Haram'ın uygun bir yerinde kılınır.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Sa'y ibadeti hangi iki yer arasında yapılır?",
+      options: ["Safa ile Merve", "Arafat ile Müzdelife", "Mina ile Arafat", "Kabe ile Makam-ı İbrahim"],
+      explanation: "Sa'y ibadeti Safa ile Merve tepeleri arasında yapılır.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Oruç tutmanın farz olması için gereken şartlardan biri nedir?",
+      options: ["Akıl-baliğ olmak", "Zengin olmak", "Evli olmak", "Hacca gitmiş olmak"],
+      explanation: "Oruç tutmanın farz olması için kişinin akıl-baliğ olması gerekir.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Mest üzerine mesh ne kadar süre yapılabilir?",
+      options: ["Mukim için 1 gün", "Mukim için 3 gün", "Mukim için 1 hafta", "Sınırsız"],
+      explanation: "Mukim (yolcu olmayan) için mest üzerine mesh süresi 1 gün (24 saat)dür.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Umrenin farzları kaç tanedir?",
+      options: ["2 tane", "3 tane", "4 tane", "5 tane"],
+      explanation: "Umrenin farzları ihrama girmek ve tavaf yapmak olmak üzere 2 tanedir.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Kurban etinin kaç parçaya bölünmesi sünnettir?",
+      options: ["3 parça", "2 parça", "4 parça", "5 parça"],
+      explanation: "Kurban etinin üçe bölünmesi sünnettir: Bir parça eve, bir parça akrabaya, bir parça fakirlere.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Hangi vakitte nafile namaz kılmak mekruhtur?",
+      options: ["Güneş doğarken", "Öğle vakti", "İkindi vakti", "Yatsı vakti"],
+      explanation: "Güneş doğarken nafile namaz kılmak mekruhtur.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Fidye ne demektir?",
+      options: ["Tutulmayan oruç için verilen bedel", "Zekat", "Fitre", "Sadaka"],
+      explanation: "Fidye, tutulmayan oruç için her gün için bir fakiri doyuracak miktar kadar verilen bedeldir.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "Kefaret orucu kaç gün tutulur?",
+      options: ["60 gün", "30 gün", "40 gün", "90 gün"],
+      explanation: "Kefaret orucu aralıksız 60 gün tutulur.",
+      difficulty: 3
+    },
+    {
+      turkish: "İbadet",
+      question: "İhramın yasaklarından biri nedir?",
+      options: ["Dikişli elbise giymek", "Su içmek", "Yürümek", "Uyumak"],
+      explanation: "İhramlıyken erkekler için dikişli elbise giymek yasaktır.",
+      difficulty: 3
+    }
 ];
 
 window.ibadet3Questions = ibadet3Questions;

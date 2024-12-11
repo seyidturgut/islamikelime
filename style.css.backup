@@ -783,6 +783,71 @@ label {
 }
 
 /* Oyun Sonu Ekranı Stilleri */
+.game-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 1rem 0;
+    padding: 0 1rem;
+}
+
+.score-cards {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 0 1rem;
+}
+
+.score-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 0.5rem;
+    min-width: 100px;
+}
+
+.score-value {
+    font-size: 2rem;
+    color: #4CAF50;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.score-label {
+    color: #666;
+    font-size: 1rem;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.back-btn {
+    color: #e74c3c;
+}
+
+.sound-btn {
+    color: #4CAF50;
+}
+
 #gameOverScreen {
     position: fixed;
     top: 0;
@@ -1047,6 +1112,27 @@ label {
 }
 
 /* Responsive Tasarım */
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 1.5rem;
+    }
+
+    .score-cards {
+        margin: 1rem auto;
+    }
+
+    .score-card {
+        padding: 1rem;
+    }
+
+    .score-value {
+        font-size: 1.5rem;
+    }
+
+    .score-label {
+        font-size: 0.9rem;
+    }
+}
 @media (max-width: 768px) {
     .categories-container {
         padding: 1rem;
@@ -8239,4 +8325,15 @@ label {
 .game-over-button:hover {
     background-color: var(--primary-color);
     transform: translateY(-2px);
+}
+#level-info {
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+    display: block;
+    font-weight: bold;
+}
+
+.level-container {
+    text-align: center;
 }

@@ -1,35 +1,162 @@
 <!DOCTYPE html>
-<html lang="tr" dir="ltr">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İslami Kelime Oyunu</title>
     <link rel="preload" href="/font/UthmanTN_v2-0.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/home.css">
 </head>
-<body>
-    <div id="welcome-screen" class="welcome-screen">
-        <div class="welcome-content animate__animated animate__fadeIn">
-            <h1>İslami Kelime Oyunu</h1>
-            <p>İslami terimleri öğrenmek için eğlenceli bir yolculuğa hazır mısın?</p>
-            <div class="game-rules">
-                <h3>Nasıl Oynanır?</h3>
-                <ul>
-                    <li>Her soruda 4 seçenek sunulacak</li>
-                    <li>Doğru cevap için 10 puan kazanacaksın</li>
-                    <li>Her soru için 30 saniye süren var</li>
-                    <li>Yanlış cevaplarda açıklamalı bilgi kartı göreceksin</li>
-                </ul>
+<body class="bg-gradient-to-br from-emerald-50 to-teal-100 min-h-screen flex flex-col justify-center items-center">
+    <div class="container mx-auto px-4 py-8 text-center">
+        <div class="max-w-2xl mx-auto mb-12">
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-800 mb-6">
+                İslami Kelime Oyunu
+            </h1>
+            <p class="text-xl text-emerald-600 mb-8">
+                İslami terimleri öğrenmek ve pratik yapmak için eğlenceli bir oyun
+            </p>
+            
+            <div class="space-y-6">
+                <a href="categories.html" 
+                   class="main-button group bg-emerald-500 hover:bg-emerald-600 text-white text-xl font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3 w-full sm:w-auto mx-auto">
+                    <span>Oyuna Başla</span>
+                    <i class="fas fa-play group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                
+                <button data-modal-target="tutorialModal" data-modal-toggle="tutorialModal"
+                        class="main-button group bg-white hover:bg-gray-50 text-emerald-600 text-xl font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3 w-full sm:w-auto mx-auto">
+                    <span>Nasıl Oynanır?</span>
+                    <i class="fas fa-question-circle group-hover:rotate-12 transition-transform"></i>
+                </button>
+                
+                <button data-modal-target="aboutModal" data-modal-toggle="aboutModal"
+                        class="main-button group bg-white hover:bg-gray-50 text-emerald-600 text-xl font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3 w-full sm:w-auto mx-auto">
+                    <span>Hakkında</span>
+                    <i class="fas fa-info-circle group-hover:rotate-12 transition-transform"></i>
+                </button>
             </div>
-            <a href="categories.html" class="start-game-btn animate__animated animate__pulse animate__infinite">Başla</a>
         </div>
     </div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorialModal" tabindex="-1" aria-hidden="true" 
+         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-2xl shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-2xl font-bold text-emerald-800">Nasıl Oynanır?</h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:text-gray-500 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" 
+                            data-modal-hide="tutorialModal">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                                1
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">Kategori Seçimi</h4>
+                                <p class="text-gray-600">İstediğiniz bir kategoriyi seçerek oyuna başlayabilirsiniz. Her kategori farklı İslami terimleri içerir.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                                2
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">Seviye Seçimi</h4>
+                                <p class="text-gray-600">Bazı kategorilerde farklı zorluk seviyeleri bulunur. Kendinize uygun seviyeyi seçin.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                                3
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">Kelimeyi Tahmin Et</h4>
+                                <p class="text-gray-600">Size verilen açıklamaya göre İslami terimi tahmin etmeye çalışın. Her yanlış tahmin için ipucu verilecektir.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                                4
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-emerald-700">Puanlama</h4>
+                                <p class="text-gray-600">Ne kadar az denemede doğru cevabı bulursanız, o kadar çok puan kazanırsınız.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" tabindex="-1" aria-hidden="true"
+         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-2xl max-h-full">
+            <div class="relative bg-white rounded-2xl shadow">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 border-b rounded-t">
+                    <h3 class="text-2xl font-bold text-emerald-800">Hakkında</h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:text-gray-500 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+                            data-modal-hide="aboutModal">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-6 space-y-6">
+                    <p class="text-gray-600 mb-4">
+                        İslami Kelime Oyunu, İslami terimleri eğlenceli bir şekilde öğrenmenizi sağlayan bir eğitim oyunudur.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        Bu oyun, İslami bilgileri pekiştirmek ve yeni terimler öğrenmek isteyenler için tasarlanmıştır.
+                    </p>
+                    <div class="border-t border-gray-200 pt-4 mt-4">
+                        <h4 class="text-lg font-semibold text-emerald-700 mb-2">Özellikler:</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Farklı kategorilerde İslami terimler</li>
+                            <li>Çeşitli zorluk seviyeleri</li>
+                            <li>Türkçe açıklamalar</li>
+                            <li>İpucu sistemi</li>
+                            <li>Puan sistemi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script>
-        // Sayfa yüklendiğinde animasyonları başlat
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.welcome-content').classList.add('animate__fadeIn');
-        });
+        function showTutorial() {
+            document.getElementById('tutorialModal').classList.remove('hidden');
+        }
+        
+        function closeTutorial() {
+            document.getElementById('tutorialModal').classList.add('hidden');
+        }
+        
+        function showAbout() {
+            document.getElementById('aboutModal').classList.remove('hidden');
+        }
+        
+        function closeAbout() {
+            document.getElementById('aboutModal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>

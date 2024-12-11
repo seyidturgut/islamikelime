@@ -1,0 +1,32 @@
+.score-container, .timer-container, .level-container {
+    text-align: center;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-width: 100px;
+}
+
+#score, #timer, #question-number {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1rem 2rem;
+    background: var(--background-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.correct-stat {
+    background: rgba(40, 167, 69, 0.1) !important;
+}
+
+.wrong-stat {
+    background: rgba(244, 67, 54, 0.1) !important;
+}
