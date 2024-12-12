@@ -17,7 +17,60 @@ const correctAnswerElement = document.getElementById('correctAnswer');
 const answerExplanationElement = document.getElementById('answerExplanation');
 const continueButton = document.getElementById('continueButton');
 
-// Devam Et butonuna tıklama olayını bir kere tanımla
+// UI güncellemelerini optimize etmek için RAF kullanımı
+let updatePending = false;
+const updates = {
+    score: null,
+    correct: null,
+    wrong: null,
+    currentQuestion: null,
+    timeLeft: null
+};
+
+function scheduleUpdate() {
+    if (!updatePending) {
+        updatePending = true;
+        requestAnimationFrame(() => {
+            performUpdate();
+            updatePending = false;
+        });
+    }
+}
+
+function performUpdate() {
+    if (updates.score !== null) {
+        scoreElement.textContent = updates.score;
+        updates.score = null;
+    }
+    if (updates.correct !== null) {
+        correctElement.textContent = updates.correct;
+        updates.correct = null;
+    }
+    if (updates.wrong !== null) {
+        wrongElement.textContent = updates.wrong;
+        updates.wrong = null;
+    }
+    if (updates.currentQuestion !== null) {
+        currentQuestionElement.textContent = updates.currentQuestion;
+        updates.currentQuestion = null;
+    }
+    if (updates.timeLeft !== null) {
+        timeLeftElement.textContent = updates.timeLeft;
+        updates.timeLeft = null;
+    }
+}
+
+// Event delegation için tek bir click handler
+optionsContainer.addEventListener('click', (e) => {
+    const button = e.target.closest('button');
+    if (button && !button.disabled) {
+        const answer = button.dataset.answer;
+        const question = gameState.questions[gameState.currentQuestionIndex];
+        checkAnswer(answer, question.correctAnswer, question.explanation);
+    }
+});
+
+// Devam Et butonuna tıklama olayı
 continueButton.addEventListener('click', () => {
     hideWrongAnswerModal();
     // Butonları tekrar aktif et
@@ -29,51 +82,46 @@ continueButton.addEventListener('click', () => {
 
 // UI Güncelleme Fonksiyonları
 export function updateScore() {
-    scoreElement.textContent = gameState.score;
-    correctElement.textContent = gameState.correctAnswers;
-    wrongElement.textContent = gameState.wrongAnswers;
-    currentQuestionElement.textContent = gameState.currentQuestionIndex + 1;
+    updates.score = gameState.score;
+    updates.correct = gameState.correctAnswers;
+    updates.wrong = gameState.wrongAnswers;
+    updates.currentQuestion = gameState.currentQuestionIndex + 1;
+    scheduleUpdate();
 }
 
 export function updateTimer() {
-    timeLeftElement.textContent = gameState.timeLeft;
+    updates.timeLeft = gameState.timeLeft;
+    scheduleUpdate();
 }
 
 export function updateQuestionUI(question) {
     try {
         questionTextElement.textContent = question.question;
-        optionsContainer.innerHTML = '';
-
-        console.log('Soru yükleniyor:', question);
-        console.log('Doğru cevap:', question.correctAnswer);
-
-        // Seçenekleri karıştır
-        const options = [...question.options];
-        shuffleArray(options);
-
-        options.forEach((option) => {
+        
+        // Fragment kullanarak DOM manipülasyonlarını optimize et
+        const fragment = document.createDocumentFragment();
+        const options = shuffleArray([...question.options]);
+        
+        options.forEach((option, index) => {
             const button = document.createElement('button');
-            button.className = 'option-button w-full bg-white hover:bg-emerald-50 text-emerald-800 font-semibold py-3 px-6 rounded-lg border-2 border-emerald-100 transition-colors mb-2';
+            button.className = 'option-button bg-white hover:bg-emerald-50 text-emerald-800 font-semibold py-4 px-6 rounded-xl shadow-sm transition-colors mb-4 md:mb-0';
+            button.dataset.answer = option;
             button.textContent = option;
-            button.onclick = () => {
-                // Tüm butonları devre dışı bırak
-                const allButtons = optionsContainer.querySelectorAll('button');
-                allButtons.forEach(btn => btn.disabled = true);
-                
-                // Cevabı kontrol et
-                checkAnswer(option, question.correctAnswer, question.explanation);
-            };
-            optionsContainer.appendChild(button);
+            fragment.appendChild(button);
         });
+
+        // Tek seferde DOM'u güncelle
+        optionsContainer.innerHTML = '';
+        optionsContainer.appendChild(fragment);
+
     } catch (error) {
-        console.error('Soru arayüzü güncellenirken hata:', error);
-        window.location.href = 'categories.html';
+        console.error('Soru UI güncellenirken hata:', error);
     }
 }
 
 export function showWrongAnswerModal(correctAnswer, explanation) {
     correctAnswerElement.textContent = correctAnswer;
-    answerExplanationElement.textContent = explanation || 'Açıklama bulunmuyor.';
+    answerExplanationElement.textContent = explanation;
     wrongAnswerModal.classList.remove('hidden');
 }
 
@@ -81,49 +129,38 @@ export function hideWrongAnswerModal() {
     wrongAnswerModal.classList.add('hidden');
 }
 
-export function showResultModal(stats) {
-    const finalScoreElement = document.getElementById('finalScore');
-    const finalCorrectElement = document.getElementById('finalCorrect');
-    const finalWrongElement = document.getElementById('finalWrong');
-    const highScoreElement = document.getElementById('highScore');
-    const completionRateElement = document.getElementById('completionRate');
-    const playCountElement = document.getElementById('playCount');
-    const lastPlayedElement = document.getElementById('lastPlayed');
+export function showResultModal() {
+    const finalScore = gameState.score;
+    const correctCount = gameState.correctAnswers;
+    const wrongCount = gameState.wrongAnswers;
+    const totalQuestions = gameState.questions.length;
+    const accuracy = Math.round((correctCount / totalQuestions) * 100);
 
-    // Temel istatistikleri güncelle
-    finalScoreElement.textContent = stats.score;
-    finalCorrectElement.textContent = stats.correctAnswers;
-    finalWrongElement.textContent = stats.wrongAnswers;
+    // Sonuç modalını güncelle
+    document.getElementById('finalScore').textContent = finalScore;
+    document.getElementById('correctCount').textContent = correctCount;
+    document.getElementById('wrongCount').textContent = wrongCount;
+    document.getElementById('accuracy').textContent = accuracy;
 
-    // Local storage'dan önceki verileri al
-    const storageKey = `${gameState.selectedCategory}_${gameState.selectedLevel}`;
-    const previousHighScore = parseInt(localStorage.getItem(`highScore_${storageKey}`)) || 0;
-    const previousPlayCount = parseInt(localStorage.getItem(`playCount_${storageKey}`)) || 0;
-
-    // Yeni değerleri hesapla
-    const newHighScore = Math.max(stats.score, previousHighScore);
-    const newPlayCount = previousPlayCount + 1;
-    const completionRate = Math.round((stats.correctAnswers / 15) * 100);
-    const currentDate = new Date().toLocaleDateString('tr-TR');
-
-    // Yeni değerleri local storage'a kaydet
-    localStorage.setItem(`highScore_${storageKey}`, newHighScore);
-    localStorage.setItem(`playCount_${storageKey}`, newPlayCount);
-    localStorage.setItem(`lastPlayed_${storageKey}`, currentDate);
-    localStorage.setItem(`completionRate_${storageKey}`, completionRate);
-
-    // İlerleme bilgilerini göster
-    highScoreElement.textContent = newHighScore;
-    completionRateElement.textContent = `%${completionRate}`;
-    playCountElement.textContent = newPlayCount;
-    lastPlayedElement.textContent = currentDate;
+    // Performans mesajını belirle
+    let performanceMessage = '';
+    if (accuracy >= 90) {
+        performanceMessage = 'Mükemmel! Harika bir performans gösterdiniz! ';
+    } else if (accuracy >= 70) {
+        performanceMessage = 'Çok iyi! Güzel bir performans! ';
+    } else if (accuracy >= 50) {
+        performanceMessage = 'İyi! Biraz daha pratik yaparak daha da gelişebilirsiniz. ';
+    } else {
+        performanceMessage = 'Daha fazla pratik yaparak kendini geliştirebilirsin. ';
+    }
+    document.getElementById('performanceMessage').textContent = performanceMessage;
 
     // Modalı göster
     resultModal.classList.remove('hidden');
 }
 
 export function updateCategoryTitle(category, level) {
-    categoryTitle.textContent = `${category.toUpperCase()} - Seviye ${level}`;
+    categoryTitle.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} - Seviye ${level}`;
 }
 
 // Yardımcı fonksiyonlar

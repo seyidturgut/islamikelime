@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>İslami Bilgi Oyunu - Kategoriler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.3/css/all.min.css">
@@ -11,91 +11,93 @@
 </head>
 <body class="bg-gradient-to-br from-emerald-50 to-teal-100 min-h-screen">
     <div class="container mx-auto px-4 py-8 relative min-h-screen">
-        <div class="text-center mb-12">
+        <div class="text-center mb-8">
             <h1 class="text-4xl font-bold text-emerald-800 mb-4">Kategori Seçin</h1>
             <p class="text-lg text-emerald-600">Hangi kategoride oynamak istersiniz?</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-24">
             <!-- Namaz Kategorisi -->
-            <div class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="namaz">
+            <div class="category-card bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="namaz">
                 <div class="flex items-center space-x-4">
-                    <div class="text-4xl">🕌</div>
+                    <div class="text-3xl sm:text-4xl">🕌</div>
                     <div class="flex-1">
-                        <h2 class="text-xl font-bold text-emerald-800">Namaz</h2>
-                        <p class="text-emerald-600">Namaz ile ilgili terimler</p>
+                        <h2 class="text-lg sm:text-xl font-bold text-emerald-800">Namaz</h2>
+                        <p class="text-sm sm:text-base text-emerald-600">Namaz ile ilgili terimler</p>
                     </div>
                     <div class="text-emerald-500">
-                        <i class="fas fa-chevron-right text-xl"></i>
+                        <i class="fas fa-chevron-right text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Ahlak Kategorisi -->
-            <div class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="ahlak">
+            <div class="category-card bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="ahlak">
                 <div class="flex items-center space-x-4">
-                    <div class="text-4xl">💝</div>
+                    <div class="text-3xl sm:text-4xl">💝</div>
                     <div class="flex-1">
-                        <h2 class="text-xl font-bold text-emerald-800">Ahlak</h2>
-                        <p class="text-emerald-600">İslami ahlak terimleri</p>
+                        <h2 class="text-lg sm:text-xl font-bold text-emerald-800">Ahlak</h2>
+                        <p class="text-sm sm:text-base text-emerald-600">İslami ahlak terimleri</p>
                     </div>
                     <div class="text-emerald-500">
-                        <i class="fas fa-chevron-right text-xl"></i>
+                        <i class="fas fa-chevron-right text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
 
             <!-- İbadet Kategorisi -->
-            <div class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="ibadet">
+            <div class="category-card bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="ibadet">
                 <div class="flex items-center space-x-4">
-                    <div class="text-4xl">🤲</div>
+                    <div class="text-3xl sm:text-4xl">🤲</div>
                     <div class="flex-1">
-                        <h2 class="text-xl font-bold text-emerald-800">İbadet</h2>
-                        <p class="text-emerald-600">İbadet ile ilgili terimler</p>
+                        <h2 class="text-lg sm:text-xl font-bold text-emerald-800">İbadet</h2>
+                        <p class="text-sm sm:text-base text-emerald-600">İbadet ile ilgili terimler</p>
                     </div>
                     <div class="text-emerald-500">
-                        <i class="fas fa-chevron-right text-xl"></i>
+                        <i class="fas fa-chevron-right text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Genel Kategorisi -->
-            <div class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="genel">
+            <div class="category-card bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all cursor-pointer" data-category="genel">
                 <div class="flex items-center space-x-4">
-                    <div class="text-4xl">📚</div>
+                    <div class="text-3xl sm:text-4xl">📚</div>
                     <div class="flex-1">
-                        <h2 class="text-xl font-bold text-emerald-800">Genel</h2>
-                        <p class="text-emerald-600">Genel İslami terimler</p>
+                        <h2 class="text-lg sm:text-xl font-bold text-emerald-800">Genel</h2>
+                        <p class="text-sm sm:text-base text-emerald-600">Genel İslami terimler</p>
                     </div>
                     <div class="text-emerald-500">
-                        <i class="fas fa-chevron-right text-xl"></i>
+                        <i class="fas fa-chevron-right text-lg sm:text-xl"></i>
                     </div>
                 </div>
             </div>
         </div>
-<!-- Ana Ekrana Dön Butonu -->
-<div class="fixed bottom-0 left-0 right-0 p-4 bg-white bg-opacity-90 shadow-lg z-40">
-    <a href="index.html" class="block w-full max-w-md mx-auto text-center px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors">
-        <i class="fas fa-home mr-2"></i>
-        Ana Ekrana Dön
-    </a>
-</div>
+
+        <!-- Ana Ekrana Dön Butonu -->
+        <div class="fixed bottom-0 left-0 right-0 p-4 bg-white bg-opacity-90 shadow-lg z-40">
+            <a href="index.html" class="block w-full max-w-md mx-auto text-center px-6 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition-colors">
+                <i class="fas fa-home mr-2"></i>
+                Ana Ekrana Dön
+            </a>
+        </div>
+
         <!-- Seviye Seçim Modal -->
-        <div id="levelSelectModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-            <div class="bg-white rounded-2xl p-6 max-w-4xl w-full mx-4 relative">
-                <button type="button" class="close-modal absolute top-4 right-4 text-gray-400 hover:text-gray-500">
+        <div id="levelSelectModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4">
+            <div class="bg-white rounded-2xl p-4 sm:p-6 w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
+                <button type="button" class="close-modal absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-400 hover:text-gray-500 p-2">
                     <i class="fas fa-times text-xl"></i>
                 </button>
                 
-                <h3 id="modalTitle" class="text-2xl font-bold text-emerald-800 mb-4">Seviye Seçin</h3>
+                <h3 id="modalTitle" class="text-xl sm:text-2xl font-bold text-emerald-800 mb-2 pr-8">Seviye Seçin</h3>
                 
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
                     <!-- Seviyeler JavaScript ile eklenecek -->
                 </div>
             </div>
         </div>
 
         <!-- Ana Script -->
-        <script src="js/categories.js"></script>
+        <script src="js/categories.js" type="module"></script>
     </body>
 </html>

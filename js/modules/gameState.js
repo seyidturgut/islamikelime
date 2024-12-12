@@ -25,20 +25,52 @@ export function resetGameState() {
     }
 }
 
+// Seviye kilidini kontrol et
+export function checkLevelUnlock(category, level) {
+    const key = `${category}_level_${level}`;
+    return localStorage.getItem(key) === 'unlocked';
+}
+
+// Seviye kilidini aç
+export function unlockLevel(category, level) {
+    const key = `${category}_level_${level}`;
+    localStorage.setItem(key, 'unlocked');
+}
+
+// Tüm seviyelerin kilit durumunu al
+export function getLevelUnlockStatus(category) {
+    const levels = {};
+    for (let i = 1; i <= 10; i++) {
+        const key = `${category}_level_${i}`;
+        levels[i] = i === 1 || localStorage.getItem(key) === 'unlocked';
+    }
+    return levels;
+}
+
 // Oyun geçmişini kaydet
-export function saveGameHistory(category, level, correctCount, wrongCount, score) {
+export function saveGameHistory() {
     const timestamp = Date.now();
     const history = getGameHistory();
     
+    // Başarı oranını hesapla
+    const totalQuestions = gameState.questions.length;
+    const successRate = Math.round((gameState.correctAnswers / totalQuestions) * 100);
+    
     const gameData = {
-        category,
-        level,
-        correctCount,
-        wrongCount,
-        score,
+        category: gameState.category,
+        level: gameState.level,
+        correctCount: gameState.correctAnswers,
+        wrongCount: gameState.wrongAnswers,
+        score: gameState.score,
         timestamp,
-        successRate: Math.round((correctCount / (correctCount + wrongCount)) * 100) || 0
+        successRate
     };
+
+    // Eğer başarı oranı %70'in üzerindeyse bir sonraki seviyeyi aç
+    if (successRate >= 70) {
+        const nextLevel = parseInt(gameState.level) + 1;
+        unlockLevel(gameState.category, nextLevel);
+    }
 
     history.unshift(gameData);
     localStorage.setItem('game_history', JSON.stringify(history));
@@ -51,12 +83,12 @@ function getLastGameHistory() {
 }
 
 // Oyun geçmişini getir
-export function getGameHistory() {
+function getGameHistory() {
     try {
-        const historyData = localStorage.getItem('game_history');
-        return historyData ? JSON.parse(historyData) : [];
+        const history = localStorage.getItem('game_history');
+        return history ? JSON.parse(history) : [];
     } catch (error) {
-        console.error('Geçmiş verisi okunamadı:', error);
+        console.error('Oyun geçmişi alınırken hata:', error);
         return [];
     }
 }
